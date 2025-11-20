@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQ from '../components/FAQ.astro';
+import { siteConfig } from '../config';
+
+const faqData = [
+  {
+    question: 'How long have you been in business?',
+    answer: 'We have been providing tech repair services for over 10 years, building a reputation for reliable, professional service in the local community.',
+  },
+  {
+    question: 'Are your technicians certified?',
+    answer: 'Yes, our technicians are certified and have extensive experience with all major brands and device types. We invest in ongoing training to stay current with the latest technology.',
+  },
+  {
+    question: 'What makes you different from other repair shops?',
+    answer: 'We combine years of experience with a commitment to customer service. We offer transparent pricing, fast turnaround times, and both in-shop and on-site services for maximum convenience.',
+  },
+  {
+    question: 'Do you offer warranties on repairs?',
+    answer: 'Yes, all our repairs come with a warranty on both parts and labor. This gives you peace of mind that your repair is protected.',
+  },
+];
+---
+
+<Layout 
+  title="About Us"
+  description="Learn about our tech repair business, experienced technicians, and commitment to providing fast, affordable, and professional repair services."
+  canonical={`${siteConfig.url}/about`}
+>
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto animate-fade-in">
+      <div class="flex justify-center mb-6">
+        <div class="w-32 h-1.5 bg-semantic-info rounded-full" style="background-color: var(--color-semantic-info);"></div>
+      </div>
+      <h1 class="text-4xl font-bold mb-4 text-center text-text-primary">About {siteConfig.name}</h1>
+      <p class="text-xl text-text-secondary mb-12 text-center">
+        Professional tech repair services you can trust
+      </p>
+
+      <div class="prose max-w-none mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-text-primary">Our Story</h2>
+        <p class="text-text-secondary mb-4">
+          {siteConfig.name} has been serving the local community for over 10 years, providing 
+          fast, affordable, and professional tech repair services. What started as a small local 
+          business has grown into a trusted name for laptop repair, phone repair, and data recovery 
+          services throughout South London, Surrey and surrounding areas.
+        </p>
+        <p class="text-text-secondary mb-4">
+          We understand how frustrating it can be when your device breaks down, whether it's a 
+          laptop you need for work, a phone you rely on daily, or important data you can't afford 
+          to lose. That's why we're committed to providing quick, reliable solutions with transparent 
+          pricing and excellent customer service.
+        </p>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Our Team</h2>
+        <p class="text-text-secondary mb-4">
+          Our team consists of experienced, certified technicians who specialize in repairing all 
+          major brands and device types. We stay current with the latest technology and repair 
+          techniques through ongoing training and certification programs.
+        </p>
+        <div class="rounded-lg p-6 mb-6 border-l-4 border-accent-primary scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.12), rgba(249, 115, 22, 0.05)); border-left-color: var(--color-accent-primary);">
+          <h3 class="text-xl font-bold mb-3 text-text-primary">Meet Our Lead Technician</h3>
+          <p class="text-text-secondary mb-2">
+            <strong class="text-text-primary">John Smith</strong> - Lead Technician & Founder
+          </p>
+          <p class="text-text-secondary text-sm mb-3">
+            With over 15 years of experience in electronics repair and data recovery, John has 
+            successfully repaired thousands of devices. He holds certifications in:
+          </p>
+          <ul class="text-text-secondary text-sm space-y-1 list-disc list-inside">
+            <li>Apple Certified Macintosh Technician (ACMT)</li>
+            <li>CompTIA A+ Certification</li>
+            <li>Data Recovery Specialist Certification</li>
+            <li>Mobile Device Repair Certification</li>
+          </ul>
+        </div>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Our Values</h2>
+        <ul class="space-y-3 text-text-secondary">
+          <li class="flex items-start">
+            <span class="text-accent-primary mr-2 font-bold">•</span>
+            <span><strong class="text-text-primary">Transparency:</strong> No hidden fees, clear quotes, and honest assessments</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-accent-primary mr-2 font-bold">•</span>
+            <span><strong class="text-text-primary">Quality:</strong> We use genuine or high-quality compatible parts and stand behind our work</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-accent-primary mr-2 font-bold">•</span>
+            <span><strong class="text-text-primary">Speed:</strong> Fast turnaround times without compromising quality</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-accent-primary mr-2 font-bold">•</span>
+            <span><strong class="text-text-primary">Customer Service:</strong> We treat every customer with respect and go the extra mile</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-accent-primary mr-2 font-bold">•</span>
+            <span><strong class="text-text-primary">Convenience:</strong> Both in-shop and on-site services to fit your needs</span>
+          </li>
+        </ul>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Why Choose Us?</h2>
+        <p class="text-text-secondary mb-4">
+          When you choose {siteConfig.name}, you're choosing a local business that cares about 
+          your satisfaction. We're not just fixing devices—we're helping you get back to work, 
+          stay connected, and protect your important data.
+        </p>
+        <p class="text-text-secondary">
+          Our commitment to quality, combined with competitive pricing and excellent customer 
+          service, has earned us a loyal customer base and positive reviews. We're proud to be 
+          your trusted local tech repair shop.
+        </p>
+      </div>
+
+      <div class="border-l-4 border-semantic-info p-6 mb-12 rounded-lg scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
+        <h3 class="text-xl font-bold mb-2 text-text-primary">Experience & Expertise</h3>
+        <ul class="text-text-secondary space-y-2">
+          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Over 10 years in business</span></li>
+          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Thousands of successful repairs</span></li>
+          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Certified and experienced technicians</span></li>
+          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>All major brands supported</span></li>
+          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Warranty on all repairs</span></li>
+        </ul>
+      </div>
+
+      <FAQ questions={faqData} />
+
+      <div class="mt-12 text-center">
+        <a 
+          href="/contact" 
+          class="btn-primary glow-effect inline-block mr-4"
+        >
+          Get in Touch
+        </a>
+        <a 
+          href="/services" 
+          class="btn-secondary inline-block"
+        >
+          View Our Services
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+

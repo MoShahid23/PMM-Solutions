@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { siteConfig, services } from '../../config';
+---
+
+<Layout 
+  title="Our Services"
+  description="Expert tech repair services including laptop repair, phone repair, and data recovery. Fast, affordable, and professional service."
+  canonical={`${siteConfig.url}/services`}
+>
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-3xl mx-auto text-center mb-12 animate-fade-in">
+      <div class="flex justify-center mb-6">
+        <div class="w-32 h-1.5 bg-accent-primary rounded-full" style="background-color: var(--color-accent-primary);"></div>
+      </div>
+      <h1 class="text-4xl font-bold mb-4 text-text-primary">Our Tech Repair Services</h1>
+      <p class="text-xl text-text-secondary">
+        Professional repair services for all your devices. Fast turnaround, competitive pricing, and expert technicians.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      {services.map((service, index) => (
+        <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
+          <ServiceCard
+            name={service.name}
+            slug={service.slug}
+            description={service.description}
+            icon={service.icon}
+          />
+        </div>
+      ))}
+    </div>
+
+    <div class="max-w-4xl mx-auto rounded-lg p-8 border-l-4 border-accent-primary scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.12), rgba(249, 115, 22, 0.05)); border-left-color: var(--color-accent-primary);">
+      <h2 class="text-2xl font-bold mb-4 text-text-primary">Why Choose Us?</h2>
+      <ul class="space-y-3 text-text-secondary">
+        <li class="flex items-start">
+          <span class="text-accent-primary mr-2 text-lg font-bold" style="color: var(--color-accent-primary);">✓</span>
+          <span>Fast turnaround - Most repairs completed within 24-48 hours</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-accent-primary mr-2 text-lg font-bold" style="color: var(--color-accent-primary);">✓</span>
+          <span>Competitive pricing with transparent quotes</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-accent-primary mr-2 text-lg font-bold" style="color: var(--color-accent-primary);">✓</span>
+          <span>Experienced technicians with years of expertise</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-accent-primary mr-2 text-lg font-bold" style="color: var(--color-accent-primary);">✓</span>
+          <span>On-site service available throughout South London, Surrey and surrounding areas</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-accent-primary mr-2 text-lg font-bold" style="color: var(--color-accent-primary);">✓</span>
+          <span>Warranty on all repairs</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-accent-primary mr-2 text-lg font-bold" style="color: var(--color-accent-primary);">✓</span>
+          <span>All brands and models supported</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="text-center mt-12">
+      <a 
+        href="/contact" 
+        class="btn-primary glow-effect inline-block"
+      >
+        Get a Free Quote
+      </a>
+    </div>
+  </div>
+</Layout>
+

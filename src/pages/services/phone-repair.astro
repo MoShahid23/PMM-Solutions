@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Phone Repair';
+const serviceDescription = 'Fast and reliable phone repair services for iPhone, Samsung, and all major brands. Screen replacement, battery repair, and more.';
+
+// Service schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Phone Repair',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Which phone brands do you repair?',
+    answer: 'We repair all major phone brands including Apple iPhone, Samsung Galaxy, Google Pixel, OnePlus, Huawei, and more. Our technicians are certified and experienced with the latest models.',
+  },
+  {
+    question: 'How much does phone screen replacement cost?',
+    answer: 'Screen replacement costs vary by model. iPhone screen repairs typically start from £80, Samsung screens from £70. We use high-quality replacement screens and provide warranty on all repairs.',
+  },
+  {
+    question: 'How long does phone repair take?',
+    answer: 'Most phone repairs including screen replacement, battery replacement, and charging port repair can be completed within 1-2 hours while you wait. More complex repairs may take 24-48 hours.',
+  },
+  {
+    question: 'Will my phone data be safe during repair?',
+    answer: 'Yes, we take data security seriously. In most cases, we don\'t need to access your data for repairs. If data access is required, we follow strict protocols to protect your information.',
+  },
+  {
+    question: 'Do you offer same-day phone repair?',
+    answer: 'Yes, many phone repairs can be completed same-day, often while you wait. We stock common parts for popular models to ensure fast turnaround times.',
+  },
+  {
+    question: 'Can you repair water-damaged phones?',
+    answer: 'Yes, we offer water damage repair services. Success depends on the extent of damage and how quickly you bring the device in. We can often recover phones that have been water-damaged if treated promptly.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/phone-repair`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto animate-fade-in">
+      <div class="flex mb-6">
+        <div class="w-32 h-1.5 bg-accent-primary rounded-full" style="background-color: var(--color-accent-primary);"></div>
+      </div>
+      <h1 class="text-4xl font-bold mb-4 text-text-primary">{serviceName}</h1>
+      <p class="text-xl text-text-secondary mb-8">{serviceDescription}</p>
+
+      <div class="prose max-w-none mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-text-primary border-b-2 border-accent-primary/30 pb-2 inline-block" style="border-bottom-color: rgba(249, 115, 22, 0.3);">Common Phone Repairs</h2>
+        <ul class="space-y-3 text-text-secondary mt-4">
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Screen Replacement:</strong> Cracked, broken, or unresponsive screens for all models</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Battery Replacement:</strong> New batteries for improved battery life</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Charging Port Repair:</strong> Fix charging issues and port replacement</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Camera Repair:</strong> Front and rear camera replacement and repair</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Speaker Repair:</strong> Speaker and microphone replacement</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Water Damage:</strong> Water damage assessment and repair</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Button Repair:</strong> Power button, volume buttons, and home button repair</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Software Issues:</strong> Software updates, factory reset, and troubleshooting</span></li>
+        </ul>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Why Choose Us for Phone Repair?</h2>
+        <p class="text-text-secondary mb-4">
+          Our phone repair service is fast, affordable, and reliable. We use high-quality replacement 
+          parts and our experienced technicians can often complete repairs while you wait.
+        </p>
+        <p class="text-text-secondary">
+          We also offer on-site phone repair services for businesses throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden, 
+          making it convenient to get your device fixed without leaving your office.
+        </p>
+      </div>
+
+      <div class="border-l-4 border-semantic-info p-6 mb-12 rounded-lg scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
+        <h3 class="text-xl font-bold mb-2 text-text-primary">While-You-Wait Service</h3>
+        <p class="text-text-secondary">
+          Most phone repairs can be completed in 1-2 hours while you wait. We'll provide you with a 
+          comfortable waiting area and keep you updated on the progress of your repair.
+        </p>
+      </div>
+
+      <FAQ questions={faqData} />
+
+      <div class="mt-12 text-center">
+        <a 
+          href="/contact" 
+          class="btn-primary glow-effect inline-block mr-4"
+        >
+          Book a Repair
+        </a>
+        <a 
+          href="/services" 
+          class="btn-secondary inline-block"
+        >
+          View All Services
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+

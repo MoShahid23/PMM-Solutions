@@ -1,0 +1,80 @@
+---
+// FAQ component with schema support
+interface Props {
+  questions: Array<{
+    question: string;
+    answer: string;
+  }>;
+  id?: string;
+}
+
+const { questions, id = 'faq' } = Astro.props;
+
+// Generate FAQ schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: questions.map((q) => ({
+    '@type': 'Question',
+    name: q.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: q.answer,
+    },
+  })),
+};
+---
+
+<div class="faq-section" id={id}>
+  <div class="flex justify-center mb-8">
+    <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
+  </div>
+  <h2 class="text-3xl font-bold mb-4 text-text-primary text-center">Frequently Asked Questions</h2>
+  <p class="text-center text-text-secondary mb-12 max-w-2xl mx-auto">
+    Find answers to common questions about our tech repair services.
+  </p>
+  <div class="space-y-4 max-w-3xl mx-auto">
+    {questions.map((item, index) => (
+      <details class="bg-bg-surface rounded-2xl p-6 border border-border-color transition-all duration-200 group hover:shadow-soft-md faq-item">
+        <summary class="font-semibold cursor-pointer text-lg text-text-primary flex items-center justify-between gap-4 transition-colors duration-200">
+          <span class="flex-1">{item.question}</span>
+          <div class="flex-shrink-0 w-6 h-6 text-text-muted transition-transform duration-200 group-open:rotate-45">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </div>
+        </summary>
+        <p class="text-text-secondary mt-4 leading-relaxed animate-fade-in">{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  /* Hide default disclosure triangle */
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Smooth animation for FAQ opening */
+  details[open] summary ~ * {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

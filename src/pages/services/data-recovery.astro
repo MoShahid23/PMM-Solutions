@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Data Recovery';
+const serviceDescription = 'Professional data recovery services from damaged, corrupted, or inaccessible hard drives, SSDs, and storage devices. High success rate and secure handling.';
+
+// Service schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Data Recovery',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'What types of data can you recover?',
+    answer: 'We can recover data from hard drives, SSDs, USB drives, memory cards, phones, and other storage devices. This includes documents, photos, videos, emails, and other file types.',
+  },
+  {
+    question: 'How much does data recovery cost?',
+    answer: 'Data recovery costs depend on the type of device, extent of damage, and amount of data. Simple recoveries start from £150, while complex cases with physical damage may cost £300-800. We provide free evaluation and quote before proceeding.',
+  },
+  {
+    question: 'How long does data recovery take?',
+    answer: 'Simple data recovery cases can be completed within 2-5 business days. More complex cases with physical damage may take 1-2 weeks. We prioritize urgent cases when possible.',
+  },
+  {
+    question: 'Is my data secure during recovery?',
+    answer: 'Absolutely. We follow strict data security protocols and can provide non-disclosure agreements if needed. Your data is handled in a secure environment and is never shared with third parties.',
+  },
+  {
+    question: 'What if data recovery is not possible?',
+    answer: 'We provide a free evaluation to assess recoverability. If recovery is not possible, you pay nothing. We\'re honest about success rates and only charge if we successfully recover your data.',
+  },
+  {
+    question: 'Can you recover data from water-damaged devices?',
+    answer: 'Yes, we can often recover data from water-damaged devices if treated promptly. The success rate depends on the extent of damage and how quickly the device is brought in for recovery.',
+  },
+  {
+    question: 'Do you offer emergency data recovery?',
+    answer: 'Yes, we offer emergency data recovery services for urgent cases. Contact us immediately if you need urgent data recovery, and we\'ll prioritize your case.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/data-recovery`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto animate-fade-in">
+      <div class="flex mb-6">
+        <div class="w-32 h-1.5 bg-accent-primary rounded-full" style="background-color: var(--color-accent-primary);"></div>
+      </div>
+      <h1 class="text-4xl font-bold mb-4 text-text-primary">{serviceName}</h1>
+      <p class="text-xl text-text-secondary mb-8">{serviceDescription}</p>
+
+      <div class="prose max-w-none mb-12">
+        <h2 class="text-2xl font-bold mb-4 text-text-primary border-b-2 border-accent-primary/30 pb-2 inline-block" style="border-bottom-color: rgba(249, 115, 22, 0.3);">Data Recovery Services</h2>
+        <ul class="space-y-3 text-text-secondary mt-4">
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Hard Drive Recovery:</strong> Recover data from failed, crashed, or damaged hard drives</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">SSD Recovery:</strong> Data recovery from solid-state drives and flash storage</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">RAID Recovery:</strong> Recover data from RAID arrays and network storage</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">USB/Memory Card Recovery:</strong> Recover files from corrupted USB drives and memory cards</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Phone Data Recovery:</strong> Extract data from damaged or locked phones</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Deleted File Recovery:</strong> Recover accidentally deleted files and folders</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Formatted Drive Recovery:</strong> Recover data from formatted or reformatted drives</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Virus Damage Recovery:</strong> Recover data from ransomware or virus-infected drives</span></li>
+        </ul>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Our Data Recovery Process</h2>
+        <ol class="space-y-3 text-text-secondary list-decimal list-inside">
+          <li><strong class="text-text-primary">Free Evaluation:</strong> We assess your device and provide a detailed report on recoverability</li>
+          <li><strong class="text-text-primary">Quote:</strong> You receive a transparent quote with no hidden fees</li>
+          <li><strong class="text-text-primary">Recovery:</strong> Our technicians work in a cleanroom environment when needed</li>
+          <li><strong class="text-text-primary">Verification:</strong> You verify the recovered data before final payment</li>
+          <li><strong class="text-text-primary">Delivery:</strong> Data is securely delivered on a new drive or via secure transfer</li>
+        </ol>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Why Choose Us for Data Recovery?</h2>
+        <p class="text-text-secondary mb-4">
+          Our data recovery specialists have years of experience and use professional-grade tools and 
+          techniques. We maintain a high success rate and handle your data with the utmost security and care.
+        </p>
+        <p class="text-text-secondary">
+          We understand how important your data is, which is why we offer free evaluations and only 
+          charge if we successfully recover your files.
+        </p>
+      </div>
+
+      <div class="border-l-4 border-semantic-info p-6 mb-12 rounded-lg scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
+        <h3 class="text-xl font-bold mb-2 text-text-primary">Important: Stop Using the Device</h3>
+        <p class="text-text-secondary">
+          If your device has failed or you've lost data, stop using it immediately. Continued use can 
+          overwrite deleted files and make recovery more difficult or impossible. Contact us as soon as possible.
+        </p>
+      </div>
+
+      <FAQ questions={faqData} />
+
+      <div class="mt-12 text-center">
+        <a 
+          href="/contact" 
+          class="btn-primary glow-effect inline-block mr-4"
+        >
+          Start Data Recovery
+        </a>
+        <a 
+          href="/services" 
+          class="btn-secondary inline-block"
+        >
+          View All Services
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+

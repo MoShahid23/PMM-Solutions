@@ -1,0 +1,52 @@
+---
+interface Props {
+  name: string;
+  location?: string;
+  text: string;
+  rating?: number;
+}
+
+const { name, location, text, rating = 5 } = Astro.props;
+
+// Get initials from name
+const initials = name
+  .split(' ')
+  .map(word => word[0])
+  .join('')
+  .toUpperCase()
+  .slice(0, 2);
+---
+
+<div class="bg-bg-surface rounded-2xl shadow-soft hover:shadow-soft-md p-8 transition-all duration-200 border border-border-color relative">
+  <!-- Large decorative quote mark -->
+  <div class="absolute top-6 right-6 text-border-color opacity-50">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
+      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+    </svg>
+  </div>
+
+  <!-- Star rating -->
+  <div class="flex items-center mb-5">
+    <div class="flex gap-0.5 text-text-primary">
+      {Array.from({ length: rating }).map(() => (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+          <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+        </svg>
+      ))}
+    </div>
+  </div>
+
+  <!-- Testimonial text -->
+  <p class="text-text-secondary mb-6 leading-relaxed relative z-10">{text}</p>
+
+  <!-- Author info with avatar -->
+  <div class="flex items-center gap-4 pt-4 border-t border-border-color">
+    <div class="w-12 h-12 rounded-full bg-accent-primary text-bg-surface flex items-center justify-center font-semibold text-sm flex-shrink-0">
+      {initials}
+    </div>
+    <div>
+      <p class="font-semibold text-text-primary">{name}</p>
+      {location && <p class="text-sm text-text-muted">{location}</p>}
+    </div>
+  </div>
+</div>
