@@ -20,6 +20,8 @@ export const businessInfo = {
     county: "London",
     postcode: "SM4 5HT",
     country: "United Kingdom",
+    latitude: 51.4019,
+    longitude: -0.1958,
   },
   phone: "020 8127 1850",
   email: "info@pmmsolutions.co.uk",
