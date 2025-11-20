@@ -52,7 +52,81 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
+    <!-- Custom Dropdown Styles -->
+    <style>
+      /* Staggered fade-in transition for dropdown items */
+      .dropdown-item {
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      }
+
+      /* Visible state when parent group is hovered */
+      .group:hover .dropdown-item {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scroll shadows for long lists - dark theme */
+      .scroll-shadow-container-dark {
+        background-color: rgb(31, 41, 55); /* base dark-darker color */
+        background-image:
+          linear-gradient(rgb(31, 41, 55) 30%, rgba(31, 41, 55, 0)) center top,
+          linear-gradient(rgba(31, 41, 55, 0), rgb(31, 41, 55) 70%) center bottom,
+          radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)) center top,
+          radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)) center bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+        background-attachment: local, local, scroll, scroll;
+      }
+
+      /* Modern scrollbar styling - dark theme */
+      .scroll-shadow-container-dark {
+        /* Firefox scrollbar */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(37, 99, 235, 0.6) rgba(31, 41, 55, 0.3);
+      }
+
+      /* Webkit scrollbar (Chrome, Safari, Edge) */
+      .scroll-shadow-container-dark::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .scroll-shadow-container-dark::-webkit-scrollbar-track {
+        background: rgba(31, 41, 55, 0.3);
+        border-radius: 10px;
+        margin: 4px 0;
+      }
+
+      .scroll-shadow-container-dark::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, rgba(37, 99, 235, 0.7) 0%, rgba(37, 99, 235, 0.5) 100%);
+        border-radius: 10px;
+        border: 1px solid rgba(31, 41, 55, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 4px rgba(37, 99, 235, 0.2);
+      }
+
+      .scroll-shadow-container-dark::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, rgba(37, 99, 235, 0.9) 0%, rgba(37, 99, 235, 0.7) 100%);
+        box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+        transform: scaleX(1.1);
+      }
+
+      .scroll-shadow-container-dark::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(180deg, rgba(37, 99, 235, 1) 0%, rgba(37, 99, 235, 0.9) 100%);
+        box-shadow: 0 0 12px rgba(37, 99, 235, 0.6);
+      }
+
+      /* Enhanced focus visible for keyboard navigation */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid #2563EB;
+        outline-offset: 2px;
+        border-radius: 0.5rem;
+      }
+    </style>
+
     <!-- Google Analytics 4 -->
     {gaId && gaId !== 'G-XXXXXXXXXX' && (
       <>
@@ -80,29 +154,42 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
             
             <!-- Services Dropdown -->
             <li class="relative group">
-              <a href="/services" class={`text-dark-primary hover:text-accent-primary flex items-center gap-1 transition-all duration-200 font-medium ${Astro.url.pathname.startsWith('/services') ? 'text-accent-primary font-semibold' : ''}`}>
+              <a
+                href="/services"
+                class={`text-dark-primary hover:text-accent-primary flex items-center gap-1 transition-all duration-300 ease-out font-medium ${Astro.url.pathname.startsWith('/services') ? 'text-accent-primary font-semibold' : ''}`}
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
                 Services
-                <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 transition-transform duration-300 ease-out group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </a>
-              <ul class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-soft-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-border-color py-2 z-50 animate-scale-in backdrop-blur-md">
-                {services.map((service) => (
-                  <li>
+              <ul
+                role="menu"
+                class="dropdown-menu absolute left-0 mt-3 w-56 bg-dark-darker rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out border border-gray-700 py-3 z-50 overflow-hidden"
+                style="box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.2);"
+              >
+                {services.map((service, index) => (
+                  <li class="dropdown-item" style={`transition-delay: ${100 + (index * 40)}ms`}>
                     <a
                       href={`/services/${service.slug}`}
-                      class="block px-4 py-2 text-gray-700 hover:bg-bg-elevated hover:text-gray-900 transition-all duration-200 rounded-md mx-2"
+                      role="menuitem"
+                      tabindex="-1"
+                      class="group/item block px-4 py-2.5 text-dark-secondary hover:text-white transition-all duration-300 ease-out rounded-lg mx-2 relative overflow-hidden hover:bg-gradient-to-r hover:from-accent-primary/20 hover:to-transparent border-l-4 border-transparent hover:border-accent-primary hover:pl-3 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-darker"
                     >
-                      {service.name}
+                      <span class="relative z-10">{service.name}</span>
                     </a>
                   </li>
                 ))}
-                <li class="border-t border-border-color mt-1">
+                <li class="border-t border-gray-700 mt-2 pt-2">
                   <a
                     href="/services"
-                    class="block px-4 py-2 text-gray-900 hover:bg-bg-elevated font-semibold transition-all duration-200 rounded-md mx-2"
+                    role="menuitem"
+                    tabindex="-1"
+                    class="block px-4 py-2.5 text-accent-primary hover:text-accent-primary-hover font-semibold transition-all duration-300 ease-out rounded-lg mx-2 hover:bg-gradient-to-r hover:from-accent-primary/20 hover:to-transparent hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-darker"
                   >
-                    View All Services
+                    View All Services →
                   </a>
                 </li>
               </ul>
@@ -110,32 +197,47 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
 
             <!-- Service Areas Dropdown -->
             <li class="relative group">
-              <a href="/locations" class={`text-dark-primary hover:text-accent-primary flex items-center gap-1 transition-all duration-200 font-medium ${Astro.url.pathname.startsWith('/locations') || Astro.url.pathname.startsWith('/tech-repair-in') ? 'text-accent-primary font-semibold' : ''}`}>
+              <a
+                href="/locations"
+                class={`text-dark-primary hover:text-accent-primary flex items-center gap-1 transition-all duration-300 ease-out font-medium ${Astro.url.pathname.startsWith('/locations') || Astro.url.pathname.startsWith('/tech-repair-in') ? 'text-accent-primary font-semibold' : ''}`}
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
                 Service Areas
-                <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 transition-transform duration-300 ease-out group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </a>
-              <ul class="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-soft-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-border-color py-2 max-h-96 overflow-y-auto z-50 animate-scale-in backdrop-blur-md">
-                {serviceAreas.map((area) => (
-                  <li>
-                    <a
-                      href={`/tech-repair-in/${area.slug}`}
-                      class="block px-4 py-2 text-gray-700 hover:bg-bg-elevated hover:text-gray-900 transition-all duration-200 rounded-md mx-2"
-                    >
-                      {area.name}
-                    </a>
-                  </li>
-                ))}
-                <li class="border-t border-border-color mt-1">
+              <div
+                role="menu"
+                class="dropdown-menu absolute left-0 mt-3 w-64 bg-dark-darker rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out border border-gray-700 z-50 flex flex-col max-h-96"
+                style="box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.2);"
+              >
+                <ul class="scroll-shadow-container-dark overflow-y-auto flex-1 py-3">
+                  {serviceAreas.map((area, index) => (
+                    <li class="dropdown-item" style={`transition-delay: ${100 + (index * 30)}ms`}>
+                      <a
+                        href={`/tech-repair-in/${area.slug}`}
+                        role="menuitem"
+                        tabindex="-1"
+                        class="group/item block px-4 py-2.5 text-dark-secondary hover:text-white transition-all duration-300 ease-out rounded-lg mx-2 relative overflow-hidden hover:bg-gradient-to-r hover:from-accent-primary/20 hover:to-transparent border-l-4 border-transparent hover:border-accent-primary hover:pl-3 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-darker"
+                      >
+                        <span class="relative z-10">{area.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div class="border-t border-gray-700 pt-2 pb-3 bg-dark-darker flex-shrink-0">
                   <a
                     href="/locations"
-                    class="block px-4 py-2 text-gray-900 hover:bg-bg-elevated font-semibold transition-all duration-200 rounded-md mx-2"
+                    role="menuitem"
+                    tabindex="-1"
+                    class="block px-4 py-2.5 text-accent-primary hover:text-accent-primary-hover font-semibold transition-all duration-300 ease-out rounded-lg mx-2 hover:bg-gradient-to-r hover:from-accent-primary/20 hover:to-transparent hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-dark-darker"
                   >
-                    View All Service Areas
+                    View All Service Areas →
                   </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </li>
 
             <li><a href="/about" class={`text-dark-primary hover:text-accent-primary transition-colors duration-200 font-medium ${Astro.url.pathname.startsWith('/about') ? 'text-accent-primary font-semibold' : ''}`}>About</a></li>
@@ -219,24 +321,25 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
                 <!-- Mobile Menu -->
                 <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
                   <ul class="space-y-2">
-                    <li><a href="/" class="block py-2 text-dark-primary hover:text-accent-primary transition-colors duration-200 font-medium">Home</a></li>
+                    <li><a href="/" class="block py-3 px-2 text-dark-primary hover:text-accent-primary hover:bg-white/10 rounded-lg transition-all duration-300 font-medium min-h-[48px] flex items-center">Home</a></li>
                     <li>
-                      <div class="flex items-center justify-between py-2">
-                        <a href="/services" class="flex-1 text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-200">Services</a>
+                      <div class="flex items-center justify-between py-3 px-2 hover:bg-white/10 rounded-lg transition-all duration-300 min-h-[48px]">
+                        <a href="/services" class="flex-1 text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-300">Services</a>
                         <button
                           id="mobile-services-toggle"
-                          class="p-1 text-dark-primary hover:text-accent-primary transition-colors duration-200"
+                          class="p-3 text-dark-primary hover:text-accent-primary transition-all duration-300 rounded-lg hover:bg-white/10 min-w-[48px] min-h-[48px] flex items-center justify-center"
                           aria-label="Toggle services menu"
+                          aria-expanded="false"
                         >
-                          <svg id="mobile-services-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg id="mobile-services-icon" class="w-5 h-5 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                           </svg>
                         </button>
                       </div>
-                      <ul id="mobile-services-menu" class="hidden ml-4 mt-2 space-y-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                      <ul id="mobile-services-menu" class="hidden ml-2 mt-1 space-y-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out bg-dark-darker rounded-lg border-l-4 border-accent-primary/50">
                         {services.map((service) => (
                           <li>
-                            <a href={`/services/${service.slug}`} class="block py-1 text-sm text-dark-secondary hover:text-accent-primary transition-colors duration-200">
+                            <a href={`/services/${service.slug}`} class="block py-3 px-4 text-sm text-dark-secondary hover:text-white hover:bg-accent-primary/20 rounded-lg transition-all duration-300 min-h-[48px] flex items-center border-l-4 border-transparent hover:border-accent-primary">
                               {service.name}
                             </a>
                           </li>
@@ -244,30 +347,31 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
                       </ul>
                     </li>
                     <li>
-                      <div class="flex items-center justify-between py-2">
-                        <a href="/locations" class="flex-1 text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-200">Service Areas</a>
+                      <div class="flex items-center justify-between py-3 px-2 hover:bg-white/10 rounded-lg transition-all duration-300 min-h-[48px]">
+                        <a href="/locations" class="flex-1 text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-300">Service Areas</a>
                         <button
                           id="mobile-areas-toggle"
-                          class="p-1 text-dark-primary hover:text-accent-primary transition-colors duration-200"
+                          class="p-3 text-dark-primary hover:text-accent-primary transition-all duration-300 rounded-lg hover:bg-white/10 min-w-[48px] min-h-[48px] flex items-center justify-center"
                           aria-label="Toggle service areas menu"
+                          aria-expanded="false"
                         >
-                          <svg id="mobile-areas-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg id="mobile-areas-icon" class="w-5 h-5 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                           </svg>
                         </button>
                       </div>
-                      <ul id="mobile-areas-menu" class="hidden ml-4 mt-2 space-y-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                      <ul id="mobile-areas-menu" class="hidden ml-2 mt-1 space-y-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out bg-dark-darker rounded-lg border-l-4 border-accent-primary/50">
                         {serviceAreas.map((area) => (
                           <li>
-                            <a href={`/tech-repair-in/${area.slug}`} class="block py-1 text-sm text-dark-secondary hover:text-accent-primary transition-colors duration-200">
+                            <a href={`/tech-repair-in/${area.slug}`} class="block py-3 px-4 text-sm text-dark-secondary hover:text-white hover:bg-accent-primary/20 rounded-lg transition-all duration-300 min-h-[48px] flex items-center border-l-4 border-transparent hover:border-accent-primary">
                               {area.name}
                             </a>
                           </li>
                         ))}
                       </ul>
                     </li>
-                    <li><a href="/about" class="block py-2 text-dark-primary hover:text-accent-primary transition-colors duration-200 font-medium">About</a></li>
-                    <li><a href="/contact" class="block py-2 text-dark-primary hover:text-accent-primary transition-colors duration-200 font-medium">Contact</a></li>
+                    <li><a href="/about" class="block py-3 px-2 text-dark-primary hover:text-accent-primary hover:bg-white/10 rounded-lg transition-all duration-300 font-medium min-h-[48px] flex items-center">About</a></li>
+                    <li><a href="/contact" class="block py-3 px-2 text-dark-primary hover:text-accent-primary hover:bg-white/10 rounded-lg transition-all duration-300 font-medium min-h-[48px] flex items-center">Contact</a></li>
 
                     <!-- Social Media Icons (Mobile) -->
                     <li class="pt-4 mt-4 border-t border-border-color">
@@ -317,16 +421,16 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
       // Mobile menu toggle with smooth animation
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
-      
+
       if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
           const isOpen = !mobileMenu.classList.contains('hidden') && !mobileMenu.classList.contains('max-h-0');
-          
+
           if (isOpen) {
             // Close menu: animate out, then hide
             mobileMenu.classList.remove('max-h-screen', 'opacity-100');
             mobileMenu.classList.add('max-h-0', 'opacity-0');
-            
+
             // After transition completes, add hidden class
             setTimeout(() => {
               mobileMenu.classList.add('hidden');
@@ -342,24 +446,25 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
         });
       }
 
-      // Services dropdown toggle
+      // Services dropdown toggle (mobile)
       const servicesToggle = document.getElementById('mobile-services-toggle');
       const servicesMenu = document.getElementById('mobile-services-menu');
       const servicesIcon = document.getElementById('mobile-services-icon');
-      
+
       if (servicesToggle && servicesMenu && servicesIcon) {
         servicesToggle.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          
+
           const isOpen = !servicesMenu.classList.contains('hidden') && !servicesMenu.classList.contains('max-h-0');
-          
+
           if (isOpen) {
             // Close: animate out, then hide
             servicesMenu.classList.remove('max-h-96', 'opacity-100');
             servicesMenu.classList.add('max-h-0', 'opacity-0');
             servicesIcon.classList.remove('rotate-180');
-            
+            servicesToggle.setAttribute('aria-expanded', 'false');
+
             setTimeout(() => {
               servicesMenu.classList.add('hidden');
             }, 300);
@@ -370,28 +475,30 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
             servicesMenu.classList.remove('max-h-0', 'opacity-0');
             servicesMenu.classList.add('max-h-96', 'opacity-100');
             servicesIcon.classList.add('rotate-180');
+            servicesToggle.setAttribute('aria-expanded', 'true');
           }
         });
       }
 
-      // Service Areas dropdown toggle
+      // Service Areas dropdown toggle (mobile)
       const areasToggle = document.getElementById('mobile-areas-toggle');
       const areasMenu = document.getElementById('mobile-areas-menu');
       const areasIcon = document.getElementById('mobile-areas-icon');
-      
+
       if (areasToggle && areasMenu && areasIcon) {
         areasToggle.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-          
+
           const isOpen = !areasMenu.classList.contains('hidden') && !areasMenu.classList.contains('max-h-0');
-          
+
           if (isOpen) {
             // Close: animate out, then hide
             areasMenu.classList.remove('max-h-96', 'opacity-100', 'overflow-y-auto');
             areasMenu.classList.add('max-h-0', 'opacity-0', 'overflow-hidden');
             areasIcon.classList.remove('rotate-180');
-            
+            areasToggle.setAttribute('aria-expanded', 'false');
+
             setTimeout(() => {
               areasMenu.classList.add('hidden');
             }, 300);
@@ -402,9 +509,89 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
             areasMenu.classList.remove('max-h-0', 'opacity-0', 'overflow-hidden');
             areasMenu.classList.add('max-h-96', 'opacity-100', 'overflow-y-auto');
             areasIcon.classList.add('rotate-180');
+            areasToggle.setAttribute('aria-expanded', 'true');
           }
         });
       }
+
+      // Desktop dropdown keyboard navigation
+      document.addEventListener('DOMContentLoaded', () => {
+        const dropdownTriggers = document.querySelectorAll('.group > a[aria-haspopup="true"]');
+
+        dropdownTriggers.forEach((trigger) => {
+          const parentLi = trigger.closest('li.group');
+          const dropdown = parentLi?.querySelector('[role="menu"]');
+          const menuItems = dropdown?.querySelectorAll('[role="menuitem"]');
+
+          if (!dropdown || !menuItems) return;
+
+          let currentFocusIndex = -1;
+          let isDropdownOpen = false;
+
+          // Handle trigger interactions
+          trigger.addEventListener('mouseenter', () => {
+            isDropdownOpen = true;
+            trigger.setAttribute('aria-expanded', 'true');
+            if (menuItems.length > 0) {
+              menuItems[0].setAttribute('tabindex', '0');
+            }
+          });
+
+          parentLi.addEventListener('mouseleave', () => {
+            isDropdownOpen = false;
+            trigger.setAttribute('aria-expanded', 'false');
+            currentFocusIndex = -1;
+            menuItems.forEach(item => item.setAttribute('tabindex', '-1'));
+          });
+
+          // Keyboard navigation
+          trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+              e.preventDefault();
+              if (menuItems.length > 0) {
+                currentFocusIndex = 0;
+                menuItems[0].focus();
+              }
+            }
+          });
+
+          menuItems.forEach((item, index) => {
+            item.addEventListener('keydown', (e) => {
+              switch (e.key) {
+                case 'ArrowDown':
+                  e.preventDefault();
+                  currentFocusIndex = (index + 1) % menuItems.length;
+                  menuItems[currentFocusIndex].focus();
+                  break;
+
+                case 'ArrowUp':
+                  e.preventDefault();
+                  currentFocusIndex = (index - 1 + menuItems.length) % menuItems.length;
+                  menuItems[currentFocusIndex].focus();
+                  break;
+
+                case 'Escape':
+                  e.preventDefault();
+                  trigger.focus();
+                  parentLi.dispatchEvent(new Event('mouseleave'));
+                  break;
+
+                case 'Home':
+                  e.preventDefault();
+                  currentFocusIndex = 0;
+                  menuItems[0].focus();
+                  break;
+
+                case 'End':
+                  e.preventDefault();
+                  currentFocusIndex = menuItems.length - 1;
+                  menuItems[currentFocusIndex].focus();
+                  break;
+              }
+            });
+          });
+        });
+      });
     </script>
 
     <main>
