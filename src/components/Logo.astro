@@ -1,0 +1,79 @@
+---
+interface Props {
+  variant?: "minimal" | "bold" | "geometric" | "professional";
+  class?: string;
+}
+
+const { variant = "minimal", class: className = "" } = Astro.props;
+---
+
+{variant === "minimal" && (
+  <div class={`flex flex-col items-center ${className}`}>
+    <div class="flex items-center gap-1.5 mb-2">
+      <div class="w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-500 rounded flex items-center justify-center">
+        <span class="text-xl text-white">P</span>
+      </div>
+      <div class="w-10 h-10 rounded flex items-center justify-center" style="background: linear-gradient(to bottom right, var(--color-accent-primary), var(--color-accent-primary-hover));">
+        <span class="text-xl text-white">M</span>
+      </div>
+      <div class="w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-500 rounded flex items-center justify-center">
+        <span class="text-xl text-white">M</span>
+      </div>
+    </div>
+    <div class="text-xs tracking-[0.3em] text-dark-tertiary">
+      SOLUTIONS
+    </div>
+  </div>
+)}
+
+{variant === "bold" && (
+  <div class={`flex flex-col items-center ${className}`}>
+    <div class="flex items-baseline gap-2">
+      <span class="text-6xl text-white">PMM</span>
+    </div>
+    <div class="h-1 w-full mt-3 mb-2" style="background: linear-gradient(to right, transparent, var(--color-accent-secondary), transparent);"></div>
+    <div class="text-sm tracking-[0.4em] text-slate-300">
+      SOLUTIONS
+    </div>
+  </div>
+)}
+
+{variant === "geometric" && (
+  <div class={`flex items-center gap-4 ${className}`}>
+    <div class="flex gap-1">
+      <div class="w-12 h-16 rounded flex items-center justify-center" style="background: linear-gradient(to bottom right, var(--color-accent-primary), var(--color-accent-primary-hover));">
+        <span class="text-2xl text-white">P</span>
+      </div>
+      <div class="w-12 h-16 bg-gradient-to-br from-slate-700 to-slate-800 rounded flex items-center justify-center">
+        <span class="text-2xl text-white">M</span>
+      </div>
+      <div class="w-12 h-16 rounded flex items-center justify-center" style="background: linear-gradient(to bottom right, var(--color-accent-primary), var(--color-accent-primary-hover));">
+        <span class="text-2xl text-white">M</span>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-2xl text-slate-800">PMM</span>
+      <span class="text-xs tracking-[0.2em] text-slate-600">SOLUTIONS</span>
+    </div>
+  </div>
+)}
+
+{variant === "professional" && (
+  <div class={`flex flex-col ${className}`}>
+    <div class="flex items-center gap-3">
+      <div class="flex flex-col">
+        <div class="flex gap-2 mb-1">
+          <div class="w-3 h-3 rounded-full bg-white"></div>
+          <div class="w-3 h-3 rounded-full bg-blue-300"></div>
+          <div class="w-3 h-3 rounded-full bg-white"></div>
+        </div>
+        <div class="text-4xl text-white tracking-wide">
+          P M M
+        </div>
+      </div>
+    </div>
+    <div class="text-sm tracking-[0.3em] text-blue-100 mt-2 pl-1">
+      SOLUTIONS
+    </div>
+  </div>
+)}

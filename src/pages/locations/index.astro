@@ -9,71 +9,113 @@ import { siteConfig, serviceAreas } from '../../config';
   description="We provide on-site tech repair services in Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom and surrounding areas within a 40-minute radius."
   canonical={`${siteConfig.url}/locations`}
 >
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-3xl mx-auto text-center mb-12 animate-fade-in">
-      <div class="flex justify-center mb-6">
-        <div class="w-32 h-1.5 bg-semantic-info rounded-full" style="background-color: var(--color-semantic-info);"></div>
-      </div>
-      <h1 class="text-4xl font-bold mb-4 text-text-primary">Our Service Areas</h1>
-      <p class="text-xl text-text-secondary">
-        We provide professional on-site tech repair services throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden. 
-        Fast, convenient service at your location.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-      {serviceAreas.map((area, index) => (
-        <div class={`animate-slide-up delay-${(index % 3 + 1) * 100}`}>
-          <LocationCard
-            name={area.name}
-            slug={area.slug}
-          />
+  <!-- Hero Section -->
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center animate-fade-in">
+        <div class="flex justify-center mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
         </div>
-      ))}
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">Our Service Areas</h1>
+        <p class="text-xl text-dark-secondary">
+          We provide professional on-site tech repair services throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden. 
+          Fast, convenient service at your location.
+        </p>
+      </div>
     </div>
+  </section>
 
-    <div class="max-w-4xl mx-auto rounded-lg p-8 border-l-4 border-semantic-info scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.15), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
-      <h2 class="text-2xl font-bold mb-4 text-text-primary">On-Site Service Benefits</h2>
-      <ul class="space-y-3 text-text-secondary">
-        <li class="flex items-start">
-          <span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span>
-          <span>No need to leave your home or office - we come to you</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span>
-          <span>Minimal downtime for businesses</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span>
-          <span>Same professional service as in-shop repairs</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span>
-          <span>Flexible scheduling to suit your needs</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span>
-          <span>Ideal for multiple devices or business accounts</span>
-        </li>
-      </ul>
+  <!-- Locations Grid Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {serviceAreas.map((area, index) => (
+          <div class={`animate-slide-up delay-${(index % 3 + 1) * 100}`}>
+            <LocationCard
+              name={area.name}
+              slug={area.slug}
+            />
+          </div>
+        ))}
+      </div>
     </div>
+  </section>
 
-    <div class="max-w-4xl mx-auto mt-8 rounded-lg p-6 border-l-4 border-semantic-info scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
-      <h3 class="text-xl font-bold mb-2 text-text-primary">Coverage Area</h3>
-      <p class="text-text-secondary">
-        We serve Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom, and surrounding areas within a 40-minute drive radius. 
-        If you're unsure if we cover your area, please <a href="/contact" class="link-accent text-semantic-info">contact us</a> and we'll let you know.
-      </p>
+  <!-- On-Site Service Benefits Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="rounded-lg p-8 border-l-4 border-accent-primary scroll-reveal shadow-card bg-dark-card border-dark">
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary">On-Site Service Benefits</h2>
+          <ul class="space-y-3 text-dark-secondary">
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-2 text-lg font-bold">✓</span>
+              <span>No need to leave your home or office - we come to you</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-2 text-lg font-bold">✓</span>
+              <span>Minimal downtime for businesses</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-2 text-lg font-bold">✓</span>
+              <span>Same professional service as in-shop repairs</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-2 text-lg font-bold">✓</span>
+              <span>Flexible scheduling to suit your needs</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-2 text-lg font-bold">✓</span>
+              <span>Ideal for multiple devices or business accounts</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="text-center mt-12">
-      <a 
-        href="/contact" 
-        class="btn-primary glow-effect inline-block"
-      >
-        Schedule On-Site Service
-      </a>
+  <!-- Coverage Area Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="rounded-lg p-6 border-l-4 border-accent-primary scroll-reveal shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Coverage Area</h3>
+          <p class="text-dark-secondary">
+            We serve Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom, and surrounding areas within a 40-minute drive radius. 
+            If you're unsure if we cover your area, please <a href="/contact" class="link-accent text-accent-primary">contact us</a> and we'll let you know.
+          </p>
+        </div>
+
+        <div class="text-center mt-12">
+          <a 
+            href="/contact" 
+            class="btn-primary glow-effect inline-block"
+          >
+            Schedule On-Site Service
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </Layout>
 

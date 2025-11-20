@@ -1,26 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FAQ from '../components/FAQ.astro';
 import { siteConfig } from '../config';
-
-const faqData = [
-  {
-    question: 'How long have you been in business?',
-    answer: 'We have been providing tech repair services for over 10 years, building a reputation for reliable, professional service in the local community.',
-  },
-  {
-    question: 'Are your technicians certified?',
-    answer: 'Yes, our technicians are certified and have extensive experience with all major brands and device types. We invest in ongoing training to stay current with the latest technology.',
-  },
-  {
-    question: 'What makes you different from other repair shops?',
-    answer: 'We combine years of experience with a commitment to customer service. We offer transparent pricing, fast turnaround times, and both in-shop and on-site services for maximum convenience.',
-  },
-  {
-    question: 'Do you offer warranties on repairs?',
-    answer: 'Yes, all our repairs come with a warranty on both parts and labor. This gives you peace of mind that your repair is protected.',
-  },
-];
 ---
 
 <Layout 
@@ -28,120 +8,128 @@ const faqData = [
   description="Learn about our tech repair business, experienced technicians, and commitment to providing fast, affordable, and professional repair services."
   canonical={`${siteConfig.url}/about`}
 >
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-4xl mx-auto animate-fade-in">
-      <div class="flex justify-center mb-6">
-        <div class="w-32 h-1.5 bg-semantic-info rounded-full" style="background-color: var(--color-semantic-info);"></div>
-      </div>
-      <h1 class="text-4xl font-bold mb-4 text-center text-text-primary">About {siteConfig.name}</h1>
-      <p class="text-xl text-text-secondary mb-12 text-center">
-        Professional tech repair services you can trust
-      </p>
-
-      <div class="prose max-w-none mb-12">
-        <h2 class="text-2xl font-bold mb-4 text-text-primary">Our Story</h2>
-        <p class="text-text-secondary mb-4">
-          {siteConfig.name} has been serving the local community for over 10 years, providing 
-          fast, affordable, and professional tech repair services. What started as a small local 
-          business has grown into a trusted name for laptop repair, phone repair, and data recovery 
-          services throughout South London, Surrey and surrounding areas.
-        </p>
-        <p class="text-text-secondary mb-4">
-          We understand how frustrating it can be when your device breaks down, whether it's a 
-          laptop you need for work, a phone you rely on daily, or important data you can't afford 
-          to lose. That's why we're committed to providing quick, reliable solutions with transparent 
-          pricing and excellent customer service.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Our Team</h2>
-        <p class="text-text-secondary mb-4">
-          Our team consists of experienced, certified technicians who specialize in repairing all 
-          major brands and device types. We stay current with the latest technology and repair 
-          techniques through ongoing training and certification programs.
-        </p>
-        <div class="rounded-lg p-6 mb-6 border-l-4 border-accent-primary scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.12), rgba(249, 115, 22, 0.05)); border-left-color: var(--color-accent-primary);">
-          <h3 class="text-xl font-bold mb-3 text-text-primary">Meet Our Lead Technician</h3>
-          <p class="text-text-secondary mb-2">
-            <strong class="text-text-primary">John Smith</strong> - Lead Technician & Founder
-          </p>
-          <p class="text-text-secondary text-sm mb-3">
-            With over 15 years of experience in electronics repair and data recovery, John has 
-            successfully repaired thousands of devices. He holds certifications in:
-          </p>
-          <ul class="text-text-secondary text-sm space-y-1 list-disc list-inside">
-            <li>Apple Certified Macintosh Technician (ACMT)</li>
-            <li>CompTIA A+ Certification</li>
-            <li>Data Recovery Specialist Certification</li>
-            <li>Mobile Device Repair Certification</li>
-          </ul>
+  <!-- Hero Section -->
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center animate-fade-in">
+        <div class="flex justify-center mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
         </div>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Our Values</h2>
-        <ul class="space-y-3 text-text-secondary">
-          <li class="flex items-start">
-            <span class="text-accent-primary mr-2 font-bold">•</span>
-            <span><strong class="text-text-primary">Transparency:</strong> No hidden fees, clear quotes, and honest assessments</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent-primary mr-2 font-bold">•</span>
-            <span><strong class="text-text-primary">Quality:</strong> We use genuine or high-quality compatible parts and stand behind our work</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent-primary mr-2 font-bold">•</span>
-            <span><strong class="text-text-primary">Speed:</strong> Fast turnaround times without compromising quality</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent-primary mr-2 font-bold">•</span>
-            <span><strong class="text-text-primary">Customer Service:</strong> We treat every customer with respect and go the extra mile</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent-primary mr-2 font-bold">•</span>
-            <span><strong class="text-text-primary">Convenience:</strong> Both in-shop and on-site services to fit your needs</span>
-          </li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Why Choose Us?</h2>
-        <p class="text-text-secondary mb-4">
-          When you choose {siteConfig.name}, you're choosing a local business that cares about 
-          your satisfaction. We're not just fixing devices—we're helping you get back to work, 
-          stay connected, and protect your important data.
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">About {siteConfig.name}</h1>
+        <p class="text-xl text-dark-secondary mb-8">
+          Small problems or big crashes, we’re on it
         </p>
-        <p class="text-text-secondary">
-          Our commitment to quality, combined with competitive pricing and excellent customer 
-          service, has earned us a loyal customer base and positive reviews. We're proud to be 
-          your trusted local tech repair shop.
-        </p>
-      </div>
-
-      <div class="border-l-4 border-semantic-info p-6 mb-12 rounded-lg scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
-        <h3 class="text-xl font-bold mb-2 text-text-primary">Experience & Expertise</h3>
-        <ul class="text-text-secondary space-y-2">
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Over 10 years in business</span></li>
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Thousands of successful repairs</span></li>
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Certified and experienced technicians</span></li>
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>All major brands supported</span></li>
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">✓</span><span>Warranty on all repairs</span></li>
-        </ul>
-      </div>
-
-      <FAQ questions={faqData} />
-
-      <div class="mt-12 text-center">
-        <a 
-          href="/contact" 
-          class="btn-primary glow-effect inline-block mr-4"
-        >
-          Get in Touch
-        </a>
-        <a 
-          href="/services" 
-          class="btn-secondary inline-block"
-        >
-          View Our Services
-        </a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose max-w-none">
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary">Our Story</h2>
+          <p class="text-dark-secondary mb-4">
+            {siteConfig.name} began as a small local service, helping neighbours with slow PCs, broken laptops and
+            the odd printer that refused to behave. Word spread, and before long we were looking after homes and
+            small businesses across South London, Surrey and the surrounding areas.
+          </p>
+          <p class="text-dark-secondary mb-4">
+            We kept hearing the same thing: people rely on their computers and phones every day, but feel stuck
+            when something goes wrong. You shouldn't have to be a tech expert just to use your own devices.
+            Our aim has always been to take the stress out of IT problems and give you straightforward, honest help.
+          </p>
+          <p class="text-dark-secondary">
+            That approach hasn’t changed. We still offer the same mix of friendly faces, clear explanations and
+            practical fixes, so you can get back to work, family or everyday life as quickly as possible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reliable Support Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Reliable Support</h2>
+        <p class="text-dark-secondary mb-4">
+          No call centres, no posting your devices away and hoping for the best. Book a visit and we’ll come to you –
+          at home or in your office. Our technicians handle everything from laptop and desktop repairs to phone
+          screen replacements, data recovery, networking and virus removal.
+        </p>
+        <p class="text-dark-secondary mb-4">
+          All our work is covered by our <strong class="text-dark-primary">no fix - no fee</strong> guarantee. 
+          If we can't put it right, you don't pay us. Simple as that.
+        </p>
+        <p class="text-dark-secondary">
+          We also know that not everyone loves talking about tech. If you’re interested, we’re happy to explain
+          exactly what went wrong. If you’re not, we’ll keep it brief and make sure everything is working properly
+          before we leave. Either way, you’re kept in the loop in plain, straightforward language.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affordable Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Affordable</h2>
+        <p class="text-dark-secondary mb-4">
+          Good support shouldn’t feel like a luxury. Because we deal with these problems every day, most issues are
+          diagnosed and fixed quickly – which keeps your costs down.
+        </p>
+        <p class="text-dark-secondary mb-4">
+          At {siteConfig.name} our pricing is fair and transparent. We agree costs up front, talk you through the
+          options, and if a repair isn’t worth doing, we’ll say so. There are no hidden extras and no pressure to
+          go ahead with work you don’t need.
+        </p>
+        <p class="text-dark-secondary">
+          Whether it’s a quick screen swap or a more involved data recovery job, the aim is always the same:
+          professional, specialist help at a price that makes sense for households and small businesses.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Why Choose Us?</h2>
+        <p class="text-dark-secondary mb-4">
+          We repair laptops, desktops and phones. We recover lost files and photos. We remove viruses and malware,
+          set up networks, sort out software issues and help keep your tech running smoothly. If it plugs in,
+          switches on or connects to the internet, there’s a good chance we can help.
+        </p>
+
+        <ul class="text-dark-secondary space-y-2 mb-8">
+          <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">✓</span><span>Over 10 years helping local customers</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">✓</span><span>Thousands of devices repaired</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">✓</span><span>Experienced, qualified technicians</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">✓</span><span>All major brands—Apple, Samsung, Dell, HP and more</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">✓</span><span>Warranty provided on all repairs</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">✓</span><span>No fix - no fee guarantee</span></li>
+        </ul>
+
+        <p class="text-dark-secondary mb-4">
+          When you choose {siteConfig.name}, you’re choosing a local team that cares about long-term customers,
+          not one-off jobs. We’ve helped busy professionals who need a laptop back the same day, families who
+          thought precious photos were gone for good, and small businesses that can’t afford IT downtime.
+        </p>
+        <p class="text-dark-secondary mb-4">
+          Many of our customers come back to us whenever they have a tech problem. They know they’ll get honest
+          advice, sensible prices and work that’s done properly the first time.
+        </p>
+        <p class="text-dark-secondary">
+          We’re here to keep the devices you rely on working the way they should. Small problems or big crashes, we’re on it.
+        </p>
+
+
+      </div>
+    </div>
+  </section>
 
   <script>
     // Scroll reveal animation
@@ -163,4 +151,3 @@ const faqData = [
     });
   </script>
 </Layout>
-

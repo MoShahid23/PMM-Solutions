@@ -304,9 +304,9 @@ export const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID"; // Update wit
 
 // Social media links
 export const socialMedia = {
-  facebook: "https://www.facebook.com/pmmsolutions",
-  youtube: "https://www.youtube.com/@pmmsolutions", // Update with actual YouTube URL if available
-  instagram: "https://www.instagram.com/pmmsolutions", // Update with actual Instagram URL if available
+  facebook: "https://www.facebook.com/profile.php?id=100063863760954",
+  youtube: "https://www.youtube.com/channel/UCwJoXWyQ7P7avbWsP4E8y8Q",
+  instagram: "https://www.instagram.com/pmmsolutions/",
 };
 
 // Newsletter subscription endpoint (can use same as formEndpoint or separate)

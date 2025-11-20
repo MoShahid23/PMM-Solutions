@@ -59,63 +59,114 @@ const faqData = [
 >
   <StructuredData schema={serviceSchema} />
 
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-4xl mx-auto animate-fade-in">
-      <div class="flex mb-6">
-        <div class="w-32 h-1.5 bg-accent-primary rounded-full" style="background-color: var(--color-accent-primary);"></div>
+  <!-- Hero Section -->
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
       </div>
-      <h1 class="text-4xl font-bold mb-4 text-text-primary">{serviceName}</h1>
-      <p class="text-xl text-text-secondary mb-8">{serviceDescription}</p>
+    </div>
+  </section>
 
-      <div class="prose max-w-none mb-12">
-        <h2 class="text-2xl font-bold mb-4 text-text-primary border-b-2 border-accent-primary/30 pb-2 inline-block">Common Laptop Repairs</h2>
-        <ul class="space-y-3 text-text-secondary mt-4">
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Screen Replacement:</strong> Cracked or broken laptop screens for all models</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Keyboard Repair:</strong> Sticky keys, broken keys, or complete keyboard replacement</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Battery Replacement:</strong> New batteries for all laptop models</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Motherboard Repair:</strong> Power issues, charging problems, and component replacement</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Hard Drive Upgrade:</strong> SSD upgrades for faster performance</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Software Issues:</strong> Virus removal, operating system reinstallation, driver updates</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Overheating:</strong> Fan cleaning, thermal paste replacement, cooling system repair</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Port Repair:</strong> USB, HDMI, charging port repairs and replacement</span></li>
-        </ul>
+  <!-- Common Repairs Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose max-w-none mb-12">
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">Common Laptop Repairs</h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Screen Replacement:</strong> Cracked or broken laptop screens for all models</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Keyboard Repair:</strong> Sticky keys, broken keys, or complete keyboard replacement</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Battery Replacement:</strong> New batteries for all laptop models</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Motherboard Repair:</strong> Power issues, charging problems, and component replacement</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Hard Drive Upgrade:</strong> SSD upgrades for faster performance</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Software Issues:</strong> Virus removal, operating system reinstallation, driver updates</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Overheating:</strong> Fan cleaning, thermal paste replacement, cooling system repair</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Port Repair:</strong> USB, HDMI, charging port repairs and replacement</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Why Choose Us for Laptop Repair?</h2>
-        <p class="text-text-secondary mb-4">
+  <!-- Why Choose Us Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Why Choose Us for Laptop Repair?</h2>
+        <p class="text-dark-secondary mb-4">
           Our experienced technicians have repaired thousands of laptops across all major brands. 
           We use genuine or high-quality compatible parts and provide transparent pricing with no hidden fees.
         </p>
-        <p class="text-text-secondary">
+        <p class="text-dark-secondary">
           We also offer on-site laptop repair services throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden, making it 
           convenient for businesses and individuals who cannot bring their device to our shop.
         </p>
       </div>
+    </div>
+  </section>
 
-      <div class="border-l-4 border-semantic-info p-6 mb-12 rounded-lg scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
-        <h3 class="text-xl font-bold mb-2 text-text-primary">Free Diagnostics</h3>
-        <p class="text-text-secondary">
-          We offer free diagnostics to identify the issue with your laptop. You'll receive a detailed 
-          report and quote before any repair work begins. No obligation to proceed.
-        </p>
-      </div>
-
-      <FAQ questions={faqData} />
-
-      <div class="mt-12 text-center">
-        <a 
-          href="/contact" 
-          class="btn-primary glow-effect inline-block mr-4"
-        >
-          Book a Repair
-        </a>
-        <a 
-          href="/services" 
-          class="btn-secondary inline-block"
-        >
-          View All Services
-        </a>
+  <!-- Free Diagnostics Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg scroll-reveal shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Free Diagnostics</h3>
+          <p class="text-dark-secondary">
+            We offer free diagnostics to identify the issue with your laptop. You'll receive a detailed 
+            report and quote before any repair work begins. No obligation to proceed.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+
+        <div class="mt-12 text-center">
+          <a 
+            href="/contact" 
+            class="btn-primary glow-effect inline-block mr-4"
+          >
+            Book a Repair
+          </a>
+          <a 
+            href="/services" 
+            class="btn-secondary inline-block"
+          >
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </Layout>
 

@@ -67,72 +67,130 @@ const faqData = [
 >
   <StructuredData schema={serviceSchema} />
 
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-4xl mx-auto animate-fade-in">
-      <div class="flex mb-6">
-        <div class="w-32 h-1.5 bg-accent-primary rounded-full" style="background-color: var(--color-accent-primary);"></div>
+  <!-- Hero Section -->
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
       </div>
-      <h1 class="text-4xl font-bold mb-4 text-text-primary">{serviceName}</h1>
-      <p class="text-xl text-text-secondary mb-8">{serviceDescription}</p>
+    </div>
+  </section>
 
-      <div class="prose max-w-none mb-12">
-        <h2 class="text-2xl font-bold mb-4 text-text-primary border-b-2 border-accent-primary/30 pb-2 inline-block" style="border-bottom-color: rgba(249, 115, 22, 0.3);">Data Recovery Services</h2>
-        <ul class="space-y-3 text-text-secondary mt-4">
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Hard Drive Recovery:</strong> Recover data from failed, crashed, or damaged hard drives</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">SSD Recovery:</strong> Data recovery from solid-state drives and flash storage</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">RAID Recovery:</strong> Recover data from RAID arrays and network storage</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">USB/Memory Card Recovery:</strong> Recover files from corrupted USB drives and memory cards</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Phone Data Recovery:</strong> Extract data from damaged or locked phones</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Deleted File Recovery:</strong> Recover accidentally deleted files and folders</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Formatted Drive Recovery:</strong> Recover data from formatted or reformatted drives</span></li>
-          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold" style="color: var(--color-accent-primary);">•</span><span><strong class="text-text-primary">Virus Damage Recovery:</strong> Recover data from ransomware or virus-infected drives</span></li>
-        </ul>
+  <!-- Data Recovery Services Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose max-w-none mb-12">
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">Data Recovery Services</h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Hard Drive Recovery:</strong> Recover data from failed, crashed, or damaged hard drives</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">SSD Recovery:</strong> Data recovery from solid-state drives and flash storage</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">RAID Recovery:</strong> Recover data from RAID arrays and network storage</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">USB/Memory Card Recovery:</strong> Recover files from corrupted USB drives and memory cards</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Phone Data Recovery:</strong> Extract data from damaged or locked phones</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Deleted File Recovery:</strong> Recover accidentally deleted files and folders</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Formatted Drive Recovery:</strong> Recover data from formatted or reformatted drives</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span><strong class="text-dark-primary">Virus Damage Recovery:</strong> Recover data from ransomware or virus-infected drives</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Our Data Recovery Process</h2>
-        <ol class="space-y-3 text-text-secondary list-decimal list-inside">
-          <li><strong class="text-text-primary">Free Evaluation:</strong> We assess your device and provide a detailed report on recoverability</li>
-          <li><strong class="text-text-primary">Quote:</strong> You receive a transparent quote with no hidden fees</li>
-          <li><strong class="text-text-primary">Recovery:</strong> Our technicians work in a cleanroom environment when needed</li>
-          <li><strong class="text-text-primary">Verification:</strong> You verify the recovered data before final payment</li>
-          <li><strong class="text-text-primary">Delivery:</strong> Data is securely delivered on a new drive or via secure transfer</li>
+  <!-- Recovery Process Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Our Data Recovery Process</h2>
+        <ol class="space-y-3 text-dark-secondary list-decimal list-inside">
+          <li><strong class="text-dark-primary">Free Evaluation:</strong> We assess your device and provide a detailed report on recoverability</li>
+          <li><strong class="text-dark-primary">Quote:</strong> You receive a transparent quote with no hidden fees</li>
+          <li><strong class="text-dark-primary">Recovery:</strong> Our technicians work in a cleanroom environment when needed</li>
+          <li><strong class="text-dark-primary">Verification:</strong> You verify the recovered data before final payment</li>
+          <li><strong class="text-dark-primary">Delivery:</strong> Data is securely delivered on a new drive or via secure transfer</li>
         </ol>
+      </div>
+    </div>
+  </section>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4 text-text-primary">Why Choose Us for Data Recovery?</h2>
-        <p class="text-text-secondary mb-4">
+  <!-- Why Choose Us Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Why Choose Us for Data Recovery?</h2>
+        <p class="text-dark-secondary mb-4">
           Our data recovery specialists have years of experience and use professional-grade tools and 
           techniques. We maintain a high success rate and handle your data with the utmost security and care.
         </p>
-        <p class="text-text-secondary">
+        <p class="text-dark-secondary">
           We understand how important your data is, which is why we offer free evaluations and only 
           charge if we successfully recover your files.
         </p>
       </div>
+    </div>
+  </section>
 
-      <div class="border-l-4 border-semantic-info p-6 mb-12 rounded-lg scroll-reveal shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
-        <h3 class="text-xl font-bold mb-2 text-text-primary">Important: Stop Using the Device</h3>
-        <p class="text-text-secondary">
-          If your device has failed or you've lost data, stop using it immediately. Continued use can 
-          overwrite deleted files and make recovery more difficult or impossible. Contact us as soon as possible.
-        </p>
-      </div>
-
-      <FAQ questions={faqData} />
-
-      <div class="mt-12 text-center">
-        <a 
-          href="/contact" 
-          class="btn-primary glow-effect inline-block mr-4"
-        >
-          Start Data Recovery
-        </a>
-        <a 
-          href="/services" 
-          class="btn-secondary inline-block"
-        >
-          View All Services
-        </a>
+  <!-- Important Notice Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg scroll-reveal shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Important: Stop Using the Device</h3>
+          <p class="text-dark-secondary">
+            If your device has failed or you've lost data, stop using it immediately. Continued use can 
+            overwrite deleted files and make recovery more difficult or impossible. Contact us as soon as possible.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+
+        <div class="mt-12 text-center">
+          <a 
+            href="/contact" 
+            class="btn-primary glow-effect inline-block mr-4"
+          >
+            Start Data Recovery
+          </a>
+          <a 
+            href="/services" 
+            class="btn-secondary inline-block"
+          >
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </Layout>
 

@@ -32,138 +32,153 @@ const faqData = [
   description="Get in touch for tech repair services. Call us, visit our shop, or fill out the contact form for a free quote."
   canonical={`${siteConfig.url}/contact`}
 >
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-4xl mx-auto animate-fade-in">
-      <div class="flex justify-center mb-6">
-        <div
-          class="w-32 h-1.5 bg-accent-primary rounded-full"
-          style="background-color: var(--color-accent-primary);"
-        >
+  <!-- Hero Section -->
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center animate-fade-in">
+        <div class="flex justify-center mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
         </div>
-      </div>
-      <h1 class="text-4xl font-bold mb-4 text-center text-text-primary">
-        Contact Us
-      </h1>
-      <p class="text-xl text-text-secondary mb-12 text-center">
-        Get in touch for a free quote or to schedule a repair. We're here to
-        help!
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <!-- Contact Form -->
-        <div class="scroll-reveal">
-          <h2 class="text-2xl font-bold mb-6 text-text-primary">
-            Send Us a Message
-          </h2>
-          <ContactForm />
-        </div>
-
-        <!-- Contact Information -->
-        <div class="scroll-reveal">
-          <h2 class="text-2xl font-bold mb-6 text-text-primary">
-            Get in Touch
-          </h2>
-          <div class="space-y-6">
-            <div>
-              <h3 class="font-semibold text-lg mb-2 text-text-primary">
-                Phone
-              </h3>
-              <a
-                href={`tel:${businessInfo.phone}`}
-                class="link-accent text-semantic-info text-lg"
-              >
-                {businessInfo.phone}
-              </a>
-            </div>
-
-            <div>
-              <h3 class="font-semibold text-lg mb-2 text-text-primary">
-                Email
-              </h3>
-              <a
-                href={`mailto:${businessInfo.email}`}
-                class="link-accent text-semantic-info"
-              >
-                {businessInfo.email}
-              </a>
-            </div>
-
-            <div>
-              <h3 class="font-semibold text-lg mb-2 text-text-primary">
-                Address
-              </h3>
-              <address class="text-text-secondary not-italic">
-                {businessInfo.address.street}<br />
-                {businessInfo.address.city}, {businessInfo.address.postcode}<br
-                />
-                {businessInfo.address.country}
-              </address>
-            </div>
-
-            <div>
-              <h3 class="font-semibold text-lg mb-2 text-text-primary">
-                Opening Hours
-              </h3>
-              <ul class="text-text-secondary space-y-1">
-                <li>Monday - Friday: {businessInfo.openingHours.monday}</li>
-                <li>Saturday: {businessInfo.openingHours.saturday}</li>
-                <li>Sunday: {businessInfo.openingHours.sunday}</li>
-              </ul>
-            </div>
-          </div>
-
-          <div
-            class="mt-8 border-l-4 border-semantic-info p-4 rounded-lg shadow-card"
-            style="background: linear-gradient(to right, rgba(35, 60, 99, 0.12), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);"
-          >
-            <p class="text-text-secondary">
-              <strong class="text-text-primary">Need urgent help?</strong> Call us
-              directly at{" "}
-              <a
-                href={`tel:${businessInfo.phone}`}
-                class="link-accent text-semantic-info font-semibold"
-              >
-                {businessInfo.phone}
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Map Section -->
-      <div
-        class="bg-bg-surface rounded-lg p-8 mb-12 text-center border-2 border-accent-primary/30 scroll-reveal"
-      >
-        <h2 class="text-2xl font-bold mb-4 text-text-primary">Find Us</h2>
-        <p class="text-text-secondary mb-6">
-          Visit our repair shop at {businessInfo.address.street}, {
-            businessInfo.address.city
-          }, {businessInfo.address.postcode}
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">
+          Contact Us
+        </h1>
+        <p class="text-xl text-dark-secondary mb-12">
+          Get in touch for a free quote or to schedule a repair. We're here to
+          help!
         </p>
-
-        <div class="overflow-hidden rounded-lg shadow-md mb-4">
-          <iframe
-            src="https://www.google.com/maps?q=27+London+Rd,+Morden+SM4+5HT&z=15&output=embed"
-            width="100%"
-            height="400"
-            loading="lazy"
-            allowfullscreen=""
-            referrerpolicy="no-referrer-when-downgrade"
-            class="rounded-lg"></iframe>
-        </div>
-
-        <p class="text-sm text-text-muted">
-          Conveniently located near Morden Underground Station. Free parking
-          available nearby.
-        </p>
-      </div>
-
-      <!-- FAQ Section -->
-      <div class="max-w-3xl mx-auto">
-        <FAQ questions={faqData} />
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Contact Form & Info Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <!-- Contact Form -->
+          <div class="scroll-reveal">
+            <h2 class="text-2xl font-bold mb-6 text-dark-primary">
+              Send Us a Message
+            </h2>
+            <ContactForm />
+          </div>
+
+          <!-- Contact Information -->
+          <div class="scroll-reveal">
+            <h2 class="text-2xl font-bold mb-6 text-dark-primary">
+              Get in Touch
+            </h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-semibold text-lg mb-2 text-dark-primary">
+                  Phone
+                </h3>
+                <a
+                  href={`tel:${businessInfo.phone}`}
+                  class="link-accent text-accent-primary text-lg"
+                >
+                  {businessInfo.phone}
+                </a>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-lg mb-2 text-dark-primary">
+                  Email
+                </h3>
+                <a
+                  href={`mailto:${businessInfo.email}`}
+                  class="link-accent text-accent-primary"
+                >
+                  {businessInfo.email}
+                </a>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-lg mb-2 text-dark-primary">
+                  Address
+                </h3>
+                <address class="text-dark-secondary not-italic">
+                  {businessInfo.address.street}<br />
+                  {businessInfo.address.city}, {businessInfo.address.postcode}<br
+                  />
+                  {businessInfo.address.country}
+                </address>
+              </div>
+
+              <div>
+                <h3 class="font-semibold text-lg mb-2 text-dark-primary">
+                  Opening Hours
+                </h3>
+                <ul class="text-dark-secondary space-y-1">
+                  <li>Monday - Friday: {businessInfo.openingHours.monday}</li>
+                  <li>Saturday: {businessInfo.openingHours.saturday}</li>
+                  <li>Sunday: {businessInfo.openingHours.sunday}</li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="mt-8 border-l-4 border-accent-primary p-4 rounded-lg shadow-card bg-dark-card border-dark"
+            >
+              <p class="text-dark-secondary">
+                <strong class="text-dark-primary">Need urgent help?</strong> Call us
+                directly at{" "}
+                <a
+                  href={`tel:${businessInfo.phone}`}
+                  class="link-accent text-accent-primary font-semibold"
+                >
+                  {businessInfo.phone}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="bg-dark-card rounded-lg p-8 text-center border-2 border-accent-primary/30 scroll-reveal"
+        >
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary">Find Us</h2>
+          <p class="text-dark-secondary mb-6">
+            Visit our repair shop at {businessInfo.address.street}, {
+              businessInfo.address.city
+            }, {businessInfo.address.postcode}
+          </p>
+
+          <div class="overflow-hidden rounded-lg shadow-md mb-4">
+            <iframe
+              src={`https://www.google.com/maps?q=${encodeURIComponent(businessInfo.name + ', ' + businessInfo.address.street + ', ' + businessInfo.address.city + ' ' + businessInfo.address.postcode)}&z=15&output=embed`}
+              width="100%"
+              height="400"
+              loading="lazy"
+              allowfullscreen=""
+              referrerpolicy="no-referrer-when-downgrade"
+              class="rounded-lg"></iframe>
+          </div>
+
+          <p class="text-sm text-dark-muted">
+            Conveniently located near Morden Underground Station. Free parking
+            available nearby.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+      </div>
+    </div>
+  </section>
 
   <script>
     // Scroll reveal animation

@@ -8,35 +8,40 @@ import { siteConfig, businessInfo } from '../config';
   description="Privacy Policy for PMMSolutions - Learn how we collect, use, and protect your personal information."
   canonical={`${siteConfig.url}/privacy-policy`}
 >
-  <section class="py-16 bg-bg-surface">
+  <!-- Privacy Policy Section -->
+  <section class="py-9 bg-dark-section">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-4xl font-bold mb-8 text-text-primary">Privacy Policy</h1>
-      
-      <div class="prose prose-slate max-w-none">
-        <p class="text-text-secondary mb-6">
+      <div class="text-center mb-12">
+        <div class="flex justify-center mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">Privacy Policy</h1>
+        <p class="text-dark-secondary mb-6">
           <strong>Last updated:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
-
-        <div class="space-y-6 text-text-secondary leading-relaxed">
+      </div>
+      
+      <div class="prose prose-slate max-w-none">
+        <div class="space-y-8 text-dark-secondary leading-relaxed">
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Introduction</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Introduction</h2>
             <p>
               At {siteConfig.name}, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
             </p>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Information We Collect</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Information We Collect</h2>
             <p class="mb-3">We may collect information about you in a variety of ways. The information we may collect includes:</p>
             <ul class="list-disc pl-6 space-y-2">
-              <li><strong>Personal Data:</strong> Name, email address, phone number, and postal address that you voluntarily provide when contacting us or using our services.</li>
-              <li><strong>Device Information:</strong> Information about your device, including device type, operating system, and browser type.</li>
-              <li><strong>Usage Data:</strong> Information about how you access and use our website, including pages visited, time spent on pages, and referring website addresses.</li>
+              <li><strong class="text-dark-primary">Personal Data:</strong> Name, email address, phone number, and postal address that you voluntarily provide when contacting us or using our services.</li>
+              <li><strong class="text-dark-primary">Device Information:</strong> Information about your device, including device type, operating system, and browser type.</li>
+              <li><strong class="text-dark-primary">Usage Data:</strong> Information about how you access and use our website, including pages visited, time spent on pages, and referring website addresses.</li>
             </ul>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">How We Use Your Information</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">How We Use Your Information</h2>
             <p class="mb-3">We use the information we collect to:</p>
             <ul class="list-disc pl-6 space-y-2">
               <li>Provide, maintain, and improve our services</li>
@@ -48,28 +53,28 @@ import { siteConfig, businessInfo } from '../config';
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Data Protection</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Data Protection</h2>
             <p>
               We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
             </p>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Cookies</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Cookies</h2>
             <p>
               Our website may use cookies to enhance your experience. Cookies are small files stored on your device that help us analyze website traffic and customize content. You can choose to disable cookies through your browser settings, though this may affect website functionality.
             </p>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Third-Party Services</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Third-Party Services</h2>
             <p>
               We may use third-party services to help us operate our website and provide services. These third parties may have access to your information only to perform specific tasks on our behalf and are obligated not to disclose or use it for any other purpose.
             </p>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Your Rights</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Your Rights</h2>
             <p class="mb-3">Under UK data protection laws, you have the right to:</p>
             <ul class="list-disc pl-6 space-y-2">
               <li>Access your personal data</li>
@@ -82,25 +87,25 @@ import { siteConfig, businessInfo } from '../config';
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Contact Us</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Contact Us</h2>
             <p class="mb-3">
               If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us:
             </p>
-            <address class="not-italic text-text-secondary">
-              <p><strong>{businessInfo.name}</strong></p>
+            <address class="not-italic text-dark-secondary">
+              <p><strong class="text-dark-primary">{businessInfo.name}</strong></p>
               <p>{businessInfo.address.street}</p>
               <p>{businessInfo.address.city}, {businessInfo.address.postcode}</p>
               <p class="mt-2">
-                Email: <a href={`mailto:${businessInfo.email}`} class="link-accent hover:text-accent-primary">{businessInfo.email}</a>
+                Email: <a href={`mailto:${businessInfo.email}`} class="link-accent text-accent-primary">{businessInfo.email}</a>
               </p>
               <p>
-                Phone: <a href={`tel:${businessInfo.phone}`} class="link-accent hover:text-accent-primary">{businessInfo.phone}</a>
+                Phone: <a href={`tel:${businessInfo.phone}`} class="link-accent text-accent-primary">{businessInfo.phone}</a>
               </p>
             </address>
           </div>
 
           <div>
-            <h2 class="text-2xl font-bold mb-4 text-text-primary">Changes to This Privacy Policy</h2>
+            <h2 class="text-2xl font-bold mb-4 text-dark-primary">Changes to This Privacy Policy</h2>
             <p>
               We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
             </p>

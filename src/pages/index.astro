@@ -102,12 +102,12 @@ const faqData = [
   <StructuredData schema={localBusinessSchema} />
 
   <!-- Hero Section -->
-  <section class="bg-bg-surface py-24 md:py-32">
+  <section class="bg-dark-section py-9 md:py-12">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <!-- Left: GIF -->
         <div class="animate-fade-in order-2 md:order-1">
-          <div class="rounded-2xl overflow-hidden shadow-soft-lg border border-border-color">
+          <div class="rounded-2xl overflow-hidden shadow-soft-lg border border-border-color bg-white">
             <img
               src="/hero.gif"
               alt="Tech repair services"
@@ -118,10 +118,10 @@ const faqData = [
 
         <!-- Right: Text and CTA -->
         <div class="animate-fade-in order-1 md:order-2">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 text-text-primary leading-tight">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 text-dark-primary leading-tight">
             Fast, Affordable Tech Solutions
           </h1>
-          <p class="text-xl mb-8 text-text-secondary leading-relaxed">
+          <p class="text-xl mb-8 text-dark-secondary leading-relaxed">
             Professional Apple authorized laptop repair, phone repair, and data recovery services.
             Serving Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom and surrounding areas within a 40-minute radius.
           </p>
@@ -144,14 +144,175 @@ const faqData = [
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="py-24 bg-bg-darker scroll-reveal">
+  <!-- Service Features Section (No Fix No Fee) -->
+  <section class="py-9 bg-dark-darker border-y border-dark scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- No Fix, No Fee -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">No Fix, No Fee</h3>
+          <p class="text-sm text-dark-secondary">Only pay if we solve the problem</p>
+        </div>
+
+        <!-- Same Day Service -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Same Day Service</h3>
+          <p class="text-sm text-dark-secondary">Fast turnaround when you need it</p>
+        </div>
+
+        <!-- 3 Month Guarantee -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">3 Month Guarantee</h3>
+          <p class="text-sm text-dark-secondary">Confidence in our workmanship</p>
+        </div>
+
+        <!-- Onsite Service -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Onsite Service</h3>
+          <p class="text-sm text-dark-secondary">We come to you at home or office</p>
+        </div>
+
+        <!-- Local Service -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Local Service</h3>
+          <p class="text-sm text-dark-secondary">40-minute radius from Morden</p>
+        </div>
+
+        <!-- Weekend Available -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Weekend Available</h3>
+          <p class="text-sm text-dark-secondary">Saturday appointments available</p>
+        </div>
+
+        <!-- Apple Authorized -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Apple Authorized</h3>
+          <p class="text-sm text-dark-secondary">Certified Apple device repairs</p>
+        </div>
+
+        <!-- Fixed Pricing -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Transparent Pricing</h3>
+          <p class="text-sm text-dark-secondary">Clear, upfront flat rate pricing</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-9 bg-dark-section scroll-reveal">
     <div class="container mx-auto px-4">
       <div class="flex justify-center mb-8">
         <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
       </div>
-      <h2 class="text-4xl font-bold text-center mb-4 text-text-primary">What Our Customers Say</h2>
-      <p class="text-center text-text-secondary mb-16 max-w-2xl mx-auto text-lg">
+      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">Our Services</h2>
+      <p class="text-center text-dark-secondary mb-16 max-w-2xl mx-auto text-lg">
+        Expert repair services for all your tech needs. Fast turnaround, competitive pricing, and professional service.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.slice(0, 6).map((service, index) => (
+          <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
+            <ServiceCard
+              name={service.name}
+              slug={service.slug}
+              description={service.description}
+              icon={service.icon}
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-16">
+        <a href="/services" class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
+          View All Services
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Areas Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center mb-8">
+        <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
+      </div>
+      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">Service Areas</h2>
+      <p class="text-center text-dark-secondary mb-16 max-w-2xl mx-auto text-lg">
+        We provide on-site tech repair services throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {serviceAreas.slice(0, 6).map((area, index) => (
+          <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
+            <LocationCard
+              name={area.name}
+              slug={area.slug}
+              description=""
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-16">
+        <a href="/locations" class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
+          View All Service Areas
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section (Customer Reviews) -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center mb-8">
+        <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
+      </div>
+      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">What Our Customers Say</h2>
+      <p class="text-center text-dark-secondary mb-16 max-w-2xl mx-auto text-lg">
         Trusted by hundreds of satisfied customers across South London and Surrey.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -183,194 +344,41 @@ const faqData = [
     </div>
   </section>
 
-  <!-- Service Features Section -->
-  <section class="py-16 bg-bg-surface border-y border-border-color">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- No Fix, No Fee -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">No Fix, No Fee</h3>
-          <p class="text-sm text-text-secondary">Only pay if we solve the problem</p>
-        </div>
-
-        <!-- Same Day Service -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">Same Day Service</h3>
-          <p class="text-sm text-text-secondary">Fast turnaround when you need it</p>
-        </div>
-
-        <!-- 3 Month Guarantee -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">3 Month Guarantee</h3>
-          <p class="text-sm text-text-secondary">Confidence in our workmanship</p>
-        </div>
-
-        <!-- Onsite Service -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">Onsite Service</h3>
-          <p class="text-sm text-text-secondary">We come to you at home or office</p>
-        </div>
-
-        <!-- Local Service -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">Local Service</h3>
-          <p class="text-sm text-text-secondary">40-minute radius from Morden</p>
-        </div>
-
-        <!-- Weekend Available -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">Weekend Available</h3>
-          <p class="text-sm text-text-secondary">Saturday appointments available</p>
-        </div>
-
-        <!-- Apple Authorized -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">Apple Authorized</h3>
-          <p class="text-sm text-text-secondary">Certified Apple device repairs</p>
-        </div>
-
-        <!-- Fixed Pricing -->
-        <div class="text-center">
-          <div class="flex justify-center mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-text-primary">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-          </div>
-          <h3 class="font-semibold text-text-primary mb-1">Transparent Pricing</h3>
-          <p class="text-sm text-text-secondary">Clear, upfront flat rate pricing</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-24 bg-bg-darker scroll-reveal">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center mb-8">
-        <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
-      </div>
-      <h2 class="text-4xl font-bold text-center mb-4 text-text-primary">Our Services</h2>
-      <p class="text-center text-text-secondary mb-16 max-w-2xl mx-auto text-lg">
-        Expert repair services for all your tech needs. Fast turnaround, competitive pricing, and professional service.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
-            <ServiceCard
-              name={service.name}
-              slug={service.slug}
-              description={service.description}
-              icon={service.icon}
-            />
-          </div>
-        ))}
-      </div>
-      <div class="text-center mt-16">
-        <a href="/services" class="link-accent text-text-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
-          View All Services
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Coverage Areas Section -->
-  <section class="py-24 bg-bg-surface scroll-reveal">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-center mb-8">
-        <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
-      </div>
-      <h2 class="text-4xl font-bold text-center mb-4 text-text-primary">Service Areas</h2>
-      <p class="text-center text-text-secondary mb-16 max-w-2xl mx-auto text-lg">
-        We provide on-site tech repair services throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {serviceAreas.slice(0, 6).map((area, index) => (
-          <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
-            <LocationCard
-              name={area.name}
-              slug={area.slug}
-            />
-          </div>
-        ))}
-      </div>
-      <div class="text-center mt-16">
-        <a href="/locations" class="link-accent text-text-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
-          View All Service Areas
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ Section -->
-  <section class="py-24 bg-bg-surface scroll-reveal">
+  <section class="py-9 bg-dark-darker scroll-reveal">
     <div class="container mx-auto px-4">
-      <FAQ questions={faqData} />
+      <FAQ questions={faqData} variant="dark" />
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-24 bg-gradient-to-br from-[#1E40AF] via-[#2563EB] to-[#3B82F6] border-t border-border-color scroll-reveal relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-    <div class="container mx-auto px-4 text-center relative z-10">
-      <h2 class="text-4xl font-bold mb-4 text-white drop-shadow-sm">Ready to Get Your Device Fixed?</h2>
-      <p class="text-xl mb-10 text-white max-w-2xl mx-auto drop-shadow-sm">
-        Contact us today for a free quote or to schedule a repair.
-      </p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a
-          href="/contact"
-          class="bg-white text-[#1E40AF] font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 inline-block hover:scale-105 shadow-lg"
-        >
-          Get a Quote
-        </a>
-        <a
-          href={`tel:${businessInfo.phone}`}
-          class="bg-white/20 backdrop-blur-md text-white border-2 border-white/50 font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:bg-white/30 hover:border-white/70 hover:-translate-y-0.5 inline-block shadow-lg"
-        >
-          {businessInfo.phone}
-        </a>
+  <!-- Map Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div
+        class="bg-bg-surface rounded-lg p-8 mb-12 text-center border-2 border-accent-primary/30 max-w-4xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Find Us</h2>
+        <p class="text-dark-secondary mb-6">
+          Visit our repair shop at {businessInfo.address.street}, {
+            businessInfo.address.city
+          }, {businessInfo.address.postcode}
+        </p>
+
+        <div class="overflow-hidden rounded-lg shadow-md mb-4">
+          <iframe
+            src={`https://www.google.com/maps?q=${encodeURIComponent(businessInfo.name + ', ' + businessInfo.address.street + ', ' + businessInfo.address.city + ' ' + businessInfo.address.postcode)}&z=15&output=embed`}
+            width="100%"
+            height="400"
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+            class="rounded-lg"></iframe>
+        </div>
+
+        <p class="text-sm text-dark-muted">
+          Conveniently located near Morden Underground Station. Free parking
+          available nearby.
+        </p>
       </div>
     </div>
   </section>

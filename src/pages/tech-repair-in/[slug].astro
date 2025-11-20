@@ -99,54 +99,90 @@ const faqData = [
 >
   <StructuredData schema={localBusinessSchema} />
 
-  <div class="container mx-auto px-4 py-16">
-    <div class="max-w-4xl mx-auto animate-fade-in">
-      <div class="flex mb-6">
-        <div class="w-32 h-1.5 bg-semantic-info rounded-full" style="background-color: var(--color-semantic-info);"></div>
+  <!-- Hero Section -->
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">Computer & Phone Repairs in {locationName}</h1>
+        <p class="text-lg text-dark-secondary mb-8">{locationDescription}</p>
       </div>
-      <h1 class="text-4xl font-bold mb-4 text-text-primary">Computer & Phone Repairs in {locationName}</h1>
-      <p class="text-lg text-text-secondary mb-8">{locationDescription}</p>
+    </div>
+  </section>
 
-      {location.intro && (
-        <div class="rounded-lg p-6 border-l-4 border-semantic-info mb-6 shadow-card" style="background: linear-gradient(to right, rgba(35, 60, 99, 0.15), rgba(35, 60, 99, 0.05)); border-left-color: var(--color-semantic-info);">
-          <p class="text-text-secondary text-lg leading-relaxed">{location.intro}</p>
-        </div>
-      )}
-      {location.localHighlight && (
-        <div class="rounded-lg p-5 border-l-4 border-accent-primary mb-8 shadow-card" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05)); border-left-color: var(--color-accent-primary);">
-          <p class="text-text-secondary leading-relaxed">
-            <strong class="text-semantic-info">Local Coverage:</strong> {location.localHighlight}
-          </p>
-        </div>
-      )}
+  <!-- Intro & Highlight Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        {location.intro && (
+          <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-6 shadow-card bg-dark-card border-dark">
+            <p class="text-dark-secondary text-lg leading-relaxed">{location.intro}</p>
+          </div>
+        )}
+        {location.localHighlight && (
+          <div class="rounded-lg p-5 border-l-4 border-accent-primary mb-8 shadow-card bg-dark-card border-dark">
+            <p class="text-dark-secondary leading-relaxed">
+              <strong class="text-accent-primary">Local Coverage:</strong> {location.localHighlight}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
 
-      <h2 class="text-2xl font-bold mb-4 text-text-primary border-b-2 border-accent-primary/30 pb-2 inline-block" style="border-bottom-color: rgba(249, 115, 22, 0.3);">Our Services in {locationName}</h2>
-      <ul class="space-y-3 text-text-secondary mt-4">
-        {services.map((s) => (
-          <li class="flex items-start">
-            <span class="text-semantic-info mr-2 mt-1 text-lg font-bold" style="color: var(--color-semantic-info);">→</span>
-            <span>
-              <a href={`/services/${s.slug}/`} class="link-accent text-semantic-info">
-                <strong class="text-text-primary">{s.name}:</strong>
-              </a> {s.description}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div class="my-12 rounded-lg p-6 border-l-4 border-accent-primary shadow-card" style="background: linear-gradient(to right, rgba(249, 115, 22, 0.12), rgba(249, 115, 22, 0.05)); border-left-color: var(--color-accent-primary);">
-        <h3 class="text-xl font-bold mb-4 text-text-primary">Why Choose On-Site Service in {locationName}</h3>
-        <ul class="text-text-secondary space-y-2">
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">•</span><span>No need to travel — we come to you</span></li>
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">•</span><span>Minimize downtime for home or business devices</span></li>
-          <li class="flex items-start"><span class="text-semantic-info mr-2 text-lg font-bold" style="color: var(--color-semantic-info);">•</span><span>Transparent pricing and quick turnaround</span></li>
+  <!-- Services Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">Our Services in {locationName}</h2>
+        <ul class="space-y-3 text-dark-secondary mt-4">
+          {services.map((s) => (
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-2 mt-1 text-lg font-bold">→</span>
+              <span>
+                <a href={`/services/${s.slug}/`} class="link-accent text-accent-primary">
+                  <strong class="text-dark-primary">{s.name}:</strong>
+                </a> {s.description}
+              </span>
+            </li>
+          ))}
         </ul>
       </div>
+    </div>
+  </section>
 
-      <FAQ questions={faqData} />
+  <!-- Why Choose Us Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="rounded-lg p-6 border-l-4 border-accent-primary shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-4 text-dark-primary">Why Choose On-Site Service in {locationName}</h3>
+          <ul class="text-dark-secondary space-y-2">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">•</span><span>No need to travel — we come to you</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">•</span><span>Minimize downtime for home or business devices</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">•</span><span>Transparent pricing and quick turnaround</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="my-12">
-        <div class="bg-white rounded-lg p-2 border-2 border-accent-primary/30 shadow-card">
+  <!-- FAQ Section -->
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-dark-card rounded-lg p-2 border-2 border-accent-primary/30 shadow-card">
           <iframe
             src={`https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=12&output=embed`}
             width="100%"
@@ -159,8 +195,8 @@ const faqData = [
           ></iframe>
         </div>
 
-        <p class="text-sm text-text-muted mt-2">
-          The map above shows our <strong class="text-text-primary">service coverage area</strong> for {locationName}. 
+        <p class="text-sm text-dark-muted mt-2">
+          The map above shows our <strong class="text-dark-primary">service coverage area</strong> for {locationName}. 
           Our main repair shop is located at 
           <a 
             href="https://www.google.com/maps/place/27+London+Rd,+Morden+SM4+5HT" 
@@ -172,23 +208,43 @@ const faqData = [
           </a>, 
           where we also welcome walk-in repairs and in-store service.
         </p>
-      </div>
 
-      <div class="mt-12 text-center">
-        <a 
-          href="/contact" 
-          class="btn-primary glow-effect inline-block mr-4"
-        >
-          Schedule Service in {locationName}
-        </a>
-        <a 
-          href="/locations" 
-          class="btn-secondary inline-block"
-        >
-          Other Service Areas
-        </a>
+        <div class="mt-12 text-center">
+          <a 
+            href="/contact" 
+            class="btn-primary glow-effect inline-block mr-4"
+          >
+            Schedule Service in {locationName}
+          </a>
+          <a 
+            href="/locations" 
+            class="btn-secondary inline-block"
+          >
+            Other Service Areas
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 </Layout>
 

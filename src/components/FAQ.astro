@@ -6,9 +6,10 @@ interface Props {
     answer: string;
   }>;
   id?: string;
+  variant?: 'light' | 'dark';
 }
 
-const { questions, id = 'faq' } = Astro.props;
+const { questions, id = 'faq', variant = 'light' } = Astro.props;
 
 // Generate FAQ schema
 const faqSchema = {
@@ -29,22 +30,22 @@ const faqSchema = {
   <div class="flex justify-center mb-8">
     <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
   </div>
-  <h2 class="text-3xl font-bold mb-4 text-text-primary text-center">Frequently Asked Questions</h2>
-  <p class="text-center text-text-secondary mb-12 max-w-2xl mx-auto">
+  <h2 class={`text-3xl font-bold mb-4 text-center ${variant === 'dark' ? 'text-dark-primary' : 'text-text-primary'}`}>Frequently Asked Questions</h2>
+  <p class={`text-center mb-12 max-w-2xl mx-auto ${variant === 'dark' ? 'text-dark-tertiary' : 'text-text-secondary'}`}>
     Find answers to common questions about our tech repair services.
   </p>
   <div class="space-y-4 max-w-3xl mx-auto">
     {questions.map((item, index) => (
-      <details class="bg-bg-surface rounded-2xl p-6 border border-border-color transition-all duration-200 group hover:shadow-soft-md faq-item">
-        <summary class="font-semibold cursor-pointer text-lg text-text-primary flex items-center justify-between gap-4 transition-colors duration-200">
+      <details class={`rounded-2xl p-6 border transition-all duration-200 group hover:shadow-soft-md faq-item ${variant === 'dark' ? 'bg-dark-card border-dark' : 'bg-bg-surface border-border-color'}`}>
+        <summary class={`font-semibold cursor-pointer text-lg flex items-center justify-between gap-4 transition-colors duration-200 ${variant === 'dark' ? 'text-dark-primary' : 'text-text-primary'}`}>
           <span class="flex-1">{item.question}</span>
-          <div class="flex-shrink-0 w-6 h-6 text-text-muted transition-transform duration-200 group-open:rotate-45">
+          <div class={`flex-shrink-0 w-6 h-6 transition-transform duration-200 group-open:rotate-45 ${variant === 'dark' ? 'text-dark-tertiary' : 'text-text-muted'}`}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
           </div>
         </summary>
-        <p class="text-text-secondary mt-4 leading-relaxed animate-fade-in">{item.answer}</p>
+        <p class={`mt-4 leading-relaxed animate-fade-in ${variant === 'dark' ? 'text-dark-tertiary' : 'text-text-secondary'}`}>{item.answer}</p>
       </details>
     ))}
   </div>
