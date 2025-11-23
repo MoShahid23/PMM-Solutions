@@ -8,7 +8,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.example.com', // Update with actual domain
+  site: 'https://moshahid23.github.io/PMM-Solutions',
+  base: '/PMM-Solutions/',
   vite: {
     plugins: [tailwindcss()]
   },
