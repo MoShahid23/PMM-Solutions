@@ -63,9 +63,9 @@ const localBusinessSchema = {
   },
   areaServed: [
     {
-      '@type': 'City',
-      name: locationName,
-    },
+    '@type': 'City',
+    name: locationName,
+  },
     {
       '@type': 'GeoCircle',
       geoMidpoint: {
@@ -99,9 +99,9 @@ const localBusinessSchema = {
     itemListElement: services.map((s, index) => ({
       '@type': 'Offer',
       itemOffered: {
-        '@type': 'Service',
-        name: s.name,
-        description: s.description,
+    '@type': 'Service',
+    name: s.name,
+    description: s.description,
         areaServed: {
           '@type': 'City',
           name: locationName,
@@ -154,22 +154,25 @@ const localBusinessSchema = {
 // Location-specific testimonials (filter by location if available)
 const allTestimonials = [
   {
-    name: 'Sarah Johnson',
-    location: 'Wimbledon',
-    text: 'Excellent service! My laptop was repaired quickly and the staff were very professional. Highly recommend.',
+    name: 'Mary G',
+    location: 'Wimbledon, SW19',
+    text: 'Kashif was amazing. I needed an urgent laptop screen replacement and he managed to source the right sized screen and complete job in the same day. His prices are affordable and he and his team very professional',
     rating: 5,
+    url: 'https://share.google/aDEUzOqeARSSRIEx2',
   },
   {
-    name: 'Michael Chen',
-    location: 'Kingston',
-    text: 'They recovered all my important files after my hard drive crashed. Lifesavers!',
+    name: 'Zane Q',
+    location: 'Morden, SM4',
+    text: "Had my iMac serviced and I'm really pleased with the experience. The service was professional, friendly, and efficient, I felt well looked after from start to finish. They've definitely earned my trust, and I wouldn't hesitate to go back or recommend them to others.",
     rating: 5,
+    url: 'https://share.google/GVvTMYEXxy2OymVpD',
   },
   {
-    name: 'Emma Williams',
-    location: 'Sutton',
-    text: 'On-site service was so convenient. Fixed my phone screen in my office. Great experience!',
+    name: 'Craig B',
+    location: 'Sutton, SM1',
+    text: 'Excellent service! Helped recover data off my hard drive that was no longer working.',
     rating: 5,
+    url: 'https://share.google/qf7A2DM5BpFQ4fTxa',
   },
   {
     name: 'David Thompson',
@@ -454,7 +457,7 @@ const faqData = [
               <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
               <span>Expert repair services for laptops, phones, and data recovery throughout {locationName}</span>
             </li>
-          </ul>
+        </ul>
         </div>
 
         <div class="rounded-lg p-6 bg-dark-card border border-dark shadow-card">
@@ -476,7 +479,7 @@ const faqData = [
       <div class="flex justify-center mb-8">
         <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
       </div>
-      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">What Customers in {locationName} Say</h2>
+      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">What Our Customers Say</h2>
       <p class="text-center text-dark-secondary mb-16 max-w-2xl mx-auto text-lg">
         Trusted by satisfied customers across {locationName} and surrounding areas. Read what our clients say about our tech repair services.
       </p>
@@ -488,6 +491,7 @@ const faqData = [
               location={testimonial.location}
               text={testimonial.text}
               rating={testimonial.rating}
+              url={testimonial.url}
             />
           </div>
         ))}
