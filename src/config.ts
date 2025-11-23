@@ -151,66 +151,6 @@ export const serviceAreas = [
       "We cover Surbiton town centre, Berrylands and Tolworth, offering quick appointments and expert diagnostics.",
   },
   {
-    name: "Leatherhead",
-    slug: "leatherhead",
-    latitude: 51.2958,
-    longitude: -0.3289,
-    intro:
-      "Our Leatherhead clients value efficiency — we provide same-day tech repairs for both residential and business customers, right where they need it.",
-    localHighlight:
-      "From Fetcham to Ashtead, we offer reliable laptop, PC and phone repair across the Leatherhead area with minimal downtime.",
-  },
-  {
-    name: "Dorking",
-    slug: "dorking",
-    latitude: 51.2329,
-    longitude: -0.3338,
-    intro:
-      "Dorking’s mix of rural and town life makes it a perfect fit for our mobile tech repair model — fast, flexible and on your doorstep.",
-    localHighlight:
-      "We regularly serve areas near Dorking High Street, Westcott and North Holmwood, helping both households and small offices with their devices.",
-  },
-  {
-    name: "Banstead",
-    slug: "banstead",
-    latitude: 51.3233,
-    longitude: -0.2067,
-    intro:
-      "Banstead’s quiet residential setting doesn’t mean you should wait days for repairs — our on-site team brings professional computer and phone repair straight to your home.",
-    localHighlight:
-      "We handle service calls across Banstead Village, Nork and Chipstead, offering same-day and weekend appointments where available.",
-  },
-  {
-    name: "Carshalton",
-    slug: "carshalton",
-    latitude: 51.3657,
-    longitude: -0.1675,
-    intro:
-      "Carshalton customers benefit from our local reach — we provide fast on-site repair for laptops, phones and PCs throughout the area.",
-    localHighlight:
-      "We serve homes and offices across Carshalton Beeches, Carshalton Village and nearby Sutton, ensuring quick turnaround times.",
-  },
-  {
-    name: "Wallington",
-    slug: "wallington",
-    latitude: 51.3608,
-    longitude: -0.1508,
-    intro:
-      "Wallington’s busy residents rely on our on-site tech repair service to save time and avoid the hassle of travelling to a store.",
-    localHighlight:
-      "We cover Wallington town centre, Beddington and nearby Croydon suburbs — all with the same professional care and fair pricing.",
-  },
-  {
-    name: "Cheam",
-    slug: "cheam",
-    latitude: 51.3614,
-    longitude: -0.2142,
-    intro:
-      "Cheam’s combination of family homes and small offices makes it a perfect area for our mobile repair team, offering fast service at your convenience.",
-    localHighlight:
-      "We regularly help customers near Cheam Village, North Cheam and Sutton Borders with computer, laptop and phone repairs.",
-  },
-  {
     name: "Raynes Park",
     slug: "raynes-park",
     latitude: 51.4264,
