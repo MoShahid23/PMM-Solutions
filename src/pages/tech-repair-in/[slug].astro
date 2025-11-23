@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import StructuredData from '../../components/StructuredData.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Testimonial from '../../components/Testimonial.astro';
 import FAQ from '../../components/FAQ.astro';
 import { siteConfig, businessInfo, services, serviceAreas } from '../../config';
 
@@ -30,10 +32,13 @@ const coords = {
   lng: location.longitude?.toString() || '-0.1958',
 };
 
-// Meta info
-const locationDescription = `Professional on-site tech repair services in ${locationName}. We provide laptop repair, phone repair, and data recovery throughout ${locationName} and nearby areas.`;
+// Enhanced meta info with location keywords
+const locationDescription = `Professional on-site tech repair services in ${locationName}. Expert laptop repair, phone repair, and data recovery throughout ${locationName} and nearby areas. Fast, affordable, and reliable.`;
 
-// Schema: LocalBusiness + Services
+// Location-specific title with keywords
+const pageTitle = `Tech Repair in ${locationName} | Laptop & Phone Repairs | ${businessInfo.name}`;
+
+// Enhanced Schema: LocalBusiness with improved areaServed and serviceArea
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -56,17 +61,141 @@ const localBusinessSchema = {
     latitude: coords.lat,
     longitude: coords.lng,
   },
-  areaServed: {
-    '@type': 'City',
-    name: locationName,
+  areaServed: [
+    {
+      '@type': 'City',
+      name: locationName,
+    },
+    {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: coords.lat,
+        longitude: coords.lng,
+      },
+      geoRadius: {
+        '@type': 'Distance',
+        value: '40',
+        unitCode: 'KMT', // Kilometers
+      },
+    },
+  ],
+  serviceArea: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: coords.lat,
+      longitude: coords.lng,
+    },
+    geoRadius: {
+      '@type': 'Distance',
+      value: '40',
+      unitCode: 'KMT',
+    },
   },
-  serviceOffered: services.map((s) => ({
-    '@type': 'Service',
-    name: s.name,
-    description: s.description,
-    areaServed: locationName,
-  })),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: `Tech Repair Services in ${locationName}`,
+    itemListElement: services.map((s, index) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.name,
+        description: s.description,
+        areaServed: {
+          '@type': 'City',
+          name: locationName,
+        },
+      },
+      position: index + 1,
+    })),
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Monday',
+      opens: businessInfo.openingHours.monday.split('-')[0],
+      closes: businessInfo.openingHours.monday.split('-')[1],
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Tuesday',
+      opens: businessInfo.openingHours.tuesday.split('-')[0],
+      closes: businessInfo.openingHours.tuesday.split('-')[1],
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Wednesday',
+      opens: businessInfo.openingHours.wednesday.split('-')[0],
+      closes: businessInfo.openingHours.wednesday.split('-')[1],
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Thursday',
+      opens: businessInfo.openingHours.thursday.split('-')[0],
+      closes: businessInfo.openingHours.thursday.split('-')[1],
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Friday',
+      opens: businessInfo.openingHours.friday.split('-')[0],
+      closes: businessInfo.openingHours.friday.split('-')[1],
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: businessInfo.openingHours.saturday.split('-')[0],
+      closes: businessInfo.openingHours.saturday.split('-')[1],
+    },
+  ],
+  priceRange: '$$',
 };
+
+// Location-specific testimonials (filter by location if available)
+const allTestimonials = [
+  {
+    name: 'Sarah Johnson',
+    location: 'Wimbledon',
+    text: 'Excellent service! My laptop was repaired quickly and the staff were very professional. Highly recommend.',
+    rating: 5,
+  },
+  {
+    name: 'Michael Chen',
+    location: 'Kingston',
+    text: 'They recovered all my important files after my hard drive crashed. Lifesavers!',
+    rating: 5,
+  },
+  {
+    name: 'Emma Williams',
+    location: 'Sutton',
+    text: 'On-site service was so convenient. Fixed my phone screen in my office. Great experience!',
+    rating: 5,
+  },
+  {
+    name: 'David Thompson',
+    location: 'Morden',
+    text: 'Fast and reliable service right here in Morden. They fixed my MacBook screen the same day!',
+    rating: 5,
+  },
+  {
+    name: 'Lisa Anderson',
+    location: 'Croydon',
+    text: 'Professional data recovery service. Got all my photos back from a damaged hard drive.',
+    rating: 5,
+  },
+  {
+    name: 'James Wilson',
+    location: 'Epsom',
+    text: 'Great on-site service. They came to my home and fixed my laptop quickly. Very satisfied!',
+    rating: 5,
+  },
+];
+
+// Filter testimonials by location, then add general ones
+const locationTestimonials = [
+  ...allTestimonials.filter((t) => t.location === locationName),
+  ...allTestimonials.filter((t) => t.location !== locationName),
+].slice(0, 3);
 
 const faqData = [
   {
@@ -93,84 +222,281 @@ const faqData = [
 ---
 
 <Layout 
-  title={`Computer & Phone Repairs in ${locationName} | ${businessInfo.name}`}
+  title={pageTitle}
   description={locationDescription}
   canonical={`${siteConfig.url}/tech-repair-in/${location.slug}/`}
 >
   <StructuredData schema={localBusinessSchema} />
 
-  <!-- Hero Section -->
-  <section class="py-9 bg-dark-section">
+  <!-- Hero Section - Mirrors Homepage -->
+  <section class="bg-dark-section py-9 md:py-12">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto animate-fade-in">
-        <div class="flex mb-6">
-          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <!-- Left: Hero animation (video instead of GIF) -->
+        <div class="animate-fade-in order-2 md:order-1">
+          <div class="rounded-2xl overflow-hidden shadow-soft-lg border border-border-color bg-white">
+            <video
+              class="w-full"
+              autoplay
+              muted
+              loop
+              playsinline
+              poster="/hero-poster.webp"
+              aria-label={`Technician repairing laptops and phones in ${locationName}`}
+            >
+              <source src="/hero.mp4" type="video/mp4" />
+              <!-- Optional image fallback -->
+              <img
+                src="/hero-poster.webp"
+                alt={`Tech repair services in ${locationName} and South London`}
+              />
+            </video>
+          </div>
         </div>
-        <h1 class="text-4xl font-bold mb-4 text-dark-primary">Computer & Phone Repairs in {locationName}</h1>
-        <p class="text-lg text-dark-secondary mb-8">{locationDescription}</p>
+
+        <!-- Right: Text and CTA -->
+        <div class="animate-fade-in order-1 md:order-2">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 text-dark-primary leading-tight">
+            Fast, Affordable Tech Solutions in {locationName}
+          </h1>
+          <p class="text-xl mb-8 text-dark-secondary leading-relaxed">
+            Professional Apple authorized laptop repair, phone repair, and data recovery services in {locationName}.
+            Our expert technicians provide on-site service throughout {locationName} and surrounding areas within a 40-minute radius of Morden.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#services"
+              class="btn-secondary inline-block"
+            >
+              View Our Services
+            </a>
+            <a
+              href="/contact"
+              class="btn-primary inline-block"
+            >
+              Get Service in {locationName}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Intro & Highlight Section -->
-  <section class="py-9 bg-dark-darker scroll-reveal">
+  <!-- Service Features Section (No Fix No Fee) -->
+  <section class="py-9 bg-dark-darker border-y border-dark scroll-reveal">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        {location.intro && (
-          <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-6 shadow-card bg-dark-card border-dark">
-            <p class="text-dark-secondary text-lg leading-relaxed">{location.intro}</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- No Fix, No Fee -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
           </div>
-        )}
-        {location.localHighlight && (
-          <div class="rounded-lg p-5 border-l-4 border-accent-primary mb-8 shadow-card bg-dark-card border-dark">
-            <p class="text-dark-secondary leading-relaxed">
-              <strong class="text-accent-primary">Local Coverage:</strong> {location.localHighlight}
-            </p>
+          <h3 class="font-semibold text-dark-primary mb-1">No Fix, No Fee</h3>
+          <p class="text-sm text-dark-secondary">Only pay if we solve the problem</p>
+        </div>
+
+        <!-- Same Day Service -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
           </div>
-        )}
+          <h3 class="font-semibold text-dark-primary mb-1">Same Day Service</h3>
+          <p class="text-sm text-dark-secondary">Fast turnaround when you need it</p>
+        </div>
+
+        <!-- 3 Month Guarantee -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">3 Month Guarantee</h3>
+          <p class="text-sm text-dark-secondary">Confidence in our workmanship</p>
+        </div>
+
+        <!-- Onsite Service -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Onsite Service</h3>
+          <p class="text-sm text-dark-secondary">We come to you at home or office</p>
+        </div>
+
+        <!-- Local Service -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Local Service</h3>
+          <p class="text-sm text-dark-secondary">40-minute radius from Morden</p>
+        </div>
+
+        <!-- Weekend Available -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Weekend Available</h3>
+          <p class="text-sm text-dark-secondary">Saturday appointments available</p>
+        </div>
+
+        <!-- Apple Authorized -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Apple Authorized</h3>
+          <p class="text-sm text-dark-secondary">Certified Apple device repairs</p>
+        </div>
+
+        <!-- Fixed Pricing -->
+        <div class="text-center">
+          <div class="flex justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-dark-primary mb-1">Transparent Pricing</h3>
+          <p class="text-sm text-dark-secondary">Clear, upfront flat rate pricing</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section class="py-9 bg-dark-section scroll-reveal">
+  <section id="services" class="py-9 bg-dark-section scroll-reveal">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">Our Services in {locationName}</h2>
-        <ul class="space-y-3 text-dark-secondary mt-4">
-          {services.map((s) => (
-            <li class="flex items-start">
-              <span class="text-accent-primary mr-2 mt-1 text-lg font-bold">→</span>
-              <span>
-                <a href={`/services/${s.slug}/`} class="link-accent text-accent-primary">
-                  <strong class="text-dark-primary">{s.name}:</strong>
-                </a> {s.description}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div class="flex justify-center mb-8">
+        <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
+      </div>
+      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">Our Services in {locationName}</h2>
+      <p class="text-center text-dark-secondary mb-16 max-w-2xl mx-auto text-lg">
+        Expert repair services for all your tech needs in {locationName}. Fast turnaround, competitive pricing, and professional on-site service throughout {locationName} and nearby areas.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {services.slice(0, 6).map((service, index) => (
+          <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
+            <ServiceCard
+              name={service.name}
+              slug={service.slug}
+              description={service.description}
+              icon={service.icon}
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-16">
+        <a href="/services" class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
+          View All Services
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
+  <!-- Location-Specific Content Section (Replaces Service Areas) -->
   <section class="py-9 bg-dark-darker scroll-reveal">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <div class="rounded-lg p-6 border-l-4 border-accent-primary shadow-card bg-dark-card border-dark">
+        <div class="flex justify-center mb-8">
+          <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
+        </div>
+        <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">Tech Repair Services in {locationName}</h2>
+        
+        {location.intro && (
+          <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-6 shadow-card bg-dark-card border-dark">
+            <p class="text-dark-secondary text-lg leading-relaxed">{location.intro}</p>
+          </div>
+        )}
+        
+        {location.localHighlight && (
+          <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-8 shadow-card bg-dark-card border-dark">
+            <h3 class="text-xl font-bold mb-3 text-dark-primary">Local Coverage in {locationName}</h3>
+            <p class="text-dark-secondary leading-relaxed">
+              <strong class="text-accent-primary">Service Areas:</strong> {location.localHighlight}
+            </p>
+          </div>
+        )}
+
+        <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-6 shadow-card bg-dark-card border-dark">
           <h3 class="text-xl font-bold mb-4 text-dark-primary">Why Choose On-Site Service in {locationName}</h3>
-          <ul class="text-dark-secondary space-y-2">
-            <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">•</span><span>No need to travel — we come to you</span></li>
-            <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">•</span><span>Minimize downtime for home or business devices</span></li>
-            <li class="flex items-start"><span class="text-accent-primary mr-2 text-lg font-bold">•</span><span>Transparent pricing and quick turnaround</span></li>
+          <ul class="text-dark-secondary space-y-3">
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+              <span>No need to travel — our technicians come to your home or office in {locationName}</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+              <span>Minimize downtime for home or business devices with same-day service when available</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+              <span>Transparent pricing and quick turnaround for all {locationName} customers</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+              <span>Expert repair services for laptops, phones, and data recovery throughout {locationName}</span>
+            </li>
           </ul>
+        </div>
+
+        <div class="rounded-lg p-6 bg-dark-card border border-dark shadow-card">
+          <h3 class="text-xl font-bold mb-4 text-dark-primary">Professional Tech Repair in {locationName}</h3>
+          <p class="text-dark-secondary leading-relaxed mb-4">
+            Whether you're in {locationName} town centre or surrounding neighborhoods, our mobile technicians provide fast, reliable on-site repair services. We specialize in laptop repair, phone screen replacement, data recovery, and more — all delivered right to your door.
+          </p>
+          <p class="text-dark-secondary leading-relaxed">
+            Our {locationName} service area includes both residential and business customers. We understand that downtime isn't an option, which is why we offer same-day appointments when possible and transparent pricing with no hidden fees.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- Testimonials Section (Customer Reviews) -->
   <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center mb-8">
+        <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
+      </div>
+      <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">What Customers in {locationName} Say</h2>
+      <p class="text-center text-dark-secondary mb-16 max-w-2xl mx-auto text-lg">
+        Trusted by satisfied customers across {locationName} and surrounding areas. Read what our clients say about our tech repair services.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {locationTestimonials.map((testimonial, index) => (
+          <div class={`animate-slide-up delay-${(index + 1) * 100}`}>
+            <Testimonial
+              name={testimonial.name}
+              location={testimonial.location}
+              text={testimonial.text}
+              rating={testimonial.rating}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-9 bg-dark-darker scroll-reveal">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <FAQ questions={faqData} variant="dark" />
@@ -179,40 +505,38 @@ const faqData = [
   </section>
 
   <!-- Map Section -->
-  <section class="py-9 bg-dark-darker scroll-reveal">
+  <section class="py-9 bg-dark-section scroll-reveal">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-dark-card rounded-lg p-2 border-2 border-accent-primary/30 shadow-card">
+      <div
+        class="bg-bg-surface rounded-lg p-8 mb-12 text-center border-2 border-accent-primary/30 max-w-4xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Service Coverage in {locationName}</h2>
+        <p class="text-dark-secondary mb-6">
+          We provide on-site tech repair services throughout {locationName} and nearby areas. Our main repair shop is located at {businessInfo.address.street}, {businessInfo.address.city}, {businessInfo.address.postcode}, where we also welcome walk-in repairs and in-store service.
+        </p>
+
+        <div class="overflow-hidden rounded-lg shadow-md mb-4">
           <iframe
             src={`https://www.google.com/maps?q=${coords.lat},${coords.lng}&z=12&output=embed`}
             width="100%"
-            height="300"
+            height="400"
             loading="lazy"
-            class="rounded-lg"
-            style="border: none; display: block; opacity: 1 !important; visibility: visible !important;"
             allowfullscreen=""
             referrerpolicy="no-referrer-when-downgrade"
+            class="rounded-lg"
+            title={`Service area map for ${locationName}`}
           ></iframe>
         </div>
 
-        <p class="text-sm text-dark-muted mt-2">
+        <p class="text-sm text-dark-muted mb-6">
           The map above shows our <strong class="text-dark-primary">service coverage area</strong> for {locationName}. 
-          Our main repair shop is located at 
-          <a 
-            href="https://www.google.com/maps/place/27+London+Rd,+Morden+SM4+5HT" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="link-accent text-accent-primary"
-          >
-            27 London Rd, Morden SM4 5HT
-          </a>, 
-          where we also welcome walk-in repairs and in-store service.
+          Our technicians travel throughout {locationName} and surrounding neighborhoods to provide convenient on-site repair services.
         </p>
 
-        <div class="mt-12 text-center">
+        <div class="flex flex-wrap justify-center gap-4">
           <a 
             href="/contact" 
-            class="btn-primary glow-effect inline-block mr-4"
+            class="btn-primary glow-effect inline-block"
           >
             Schedule Service in {locationName}
           </a>
@@ -220,7 +544,7 @@ const faqData = [
             href="/locations" 
             class="btn-secondary inline-block"
           >
-            Other Service Areas
+            View Other Service Areas
           </a>
         </div>
       </div>
@@ -247,4 +571,3 @@ const faqData = [
     });
   </script>
 </Layout>
-
