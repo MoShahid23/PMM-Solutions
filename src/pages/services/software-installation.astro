@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Software Installation & Setup';
+const serviceDescription = 'Hassle-free installation and configuration of operating systems, productivity suites, creative software, and line-of-business apps.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Do you install both Windows and macOS?',
+    answer: 'Yes. We perform clean installs, upgrades, and dual-boot setups for Windows 10/11 and the latest macOS releases.',
+  },
+  {
+    question: 'Can you migrate my files and settings?',
+    answer: 'We transfer documents, email, browser data, and application preferences to keep your workflow intact.',
+  },
+  {
+    question: 'Do you provide licences?',
+    answer: 'We can supply legitimate licences or work with the keys you already own, ensuring activation and compliance.',
+  },
+  {
+    question: 'Will you configure backups and security?',
+    answer: 'Yes. We set up antivirus, enable encryption, configure Time Machine or Windows Backup, and document everything.',
+  },
+  {
+    question: 'Is on-site installation available?',
+    answer: 'We offer in-home or office visits, as well as remote installations for cloud software and SaaS platforms.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/software-installation`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            Operating system installs
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Windows 10/11 clean installs, recovery from failed updates</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>macOS upgrades, bootable USB creation, and recovery partition setup</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Dual-boot, Boot Camp, and virtualization environments</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            Application setup
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Microsoft 365, Google Workspace, Adobe CC, AutoCAD, and more</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Email client configuration, PST migration, shared mailbox access</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Line-of-business app installs with database connections and shortcuts</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Documentation included</h3>
+          <p class="text-dark-secondary">
+            We leave you with login details, licence keys (stored securely), and a quick-reference guide so you always know how to access your software stack.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Schedule Installation
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+
+

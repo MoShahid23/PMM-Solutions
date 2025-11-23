@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Business IT Support';
+const serviceDescription = 'Proactive IT support for small businesses across South London. Managed services, server care, Microsoft 365, networking, backup, and on-site call-outs.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Do you offer ad-hoc and contract support?',
+    answer: 'Yes. Choose from pay-as-you-go visits or fixed monthly plans that include monitoring, patching, and onsite call-outs.',
+  },
+  {
+    question: 'Can you manage Microsoft 365 or Google Workspace?',
+    answer: 'We handle licensing, mailbox migrations, security policies, and user onboarding/offboarding for both platforms.',
+  },
+  {
+    question: 'Do you support servers and NAS devices?',
+    answer: 'We maintain Windows Server, Synology/QNAP NAS, and hybrid cloud setups, ensuring reliable backups and remote access.',
+  },
+  {
+    question: 'Can you help with cyber security policies?',
+    answer: 'We deploy endpoint protection, MFA, password policies, and provide user awareness training tailored to SMEs.',
+  },
+  {
+    question: 'How quickly can you attend site?',
+    answer: 'Local businesses typically receive same-day or next-day onsite visits, with remote support available immediately.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/business-it-support`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            Managed services
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>24/7 monitoring, patching, and remote remediation</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Helpdesk with defined response and resolution targets</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Asset management, documentation, and lifecycle planning</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Cloud backup management and disaster recovery drills</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            On-site engineering
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Network upgrades, cabling, Wi-Fi surveys, and router replacements</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Server installs, UPS maintenance, and virtualization support</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Workstation rollout, imaging, and user training sessions</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Security audits and compliance remediation</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Flexible engagement</h3>
+          <p class="text-dark-secondary">
+            Start with a one-off health check or migration project. If you like working with us, convert to a managed plan with predictable billing and monthly reporting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Talk to Our IT Team
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+
+

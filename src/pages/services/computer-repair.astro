@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Computer & Mac Repair';
+const serviceDescription = 'Diagnostics and repair for Windows PCs, custom desktops, iMac and Mac mini systems. Logic board work, component swaps, and fast on-site service across South London.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Do you repair both Windows PCs and Apple Macs?',
+    answer: 'Yes. We work on custom-built desktops, branded PCs, iMac, Mac mini, and older Mac Pro systems. We handle logic board diagnostics, GPU replacements, SSD upgrades, and macOS reinstallations.',
+  },
+  {
+    question: 'Can you help when my computer will not boot?',
+    answer: 'We run full diagnostics to isolate hardware or software faults, recover data if required, then repair or replace faulty components so your system boots reliably again.',
+  },
+  {
+    question: 'Do you offer on-site business support?',
+    answer: 'Yes, we provide priority call-outs for local businesses who need workstation repair, server support, or urgent troubleshooting with minimal downtime.',
+  },
+  {
+    question: 'What kind of turnaround can I expect?',
+    answer: 'Most desktop repairs are completed within 24–48 hours. We keep common parts in stock and offer same-day visits where diaries allow.',
+  },
+  {
+    question: 'Is there a warranty on parts and labour?',
+    answer: 'All computer and Mac repairs include a 90-day workmanship warranty plus manufacturer warranty on any new components installed.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/computer-repair`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+          Common PC & Mac Repairs
+        </h2>
+        <ul class="space-y-3 text-dark-secondary mt-4">
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Logic board and motherboard diagnostics with component-level repair</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>GPU/graphics issues, power failures, fan or cooling problems</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>macOS and Windows rebuilds, data backup, Time Machine and iCloud setup</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>SSD, RAM, and storage upgrades to extend the life of older Macs and PCs</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Liquid damage treatment for iMac/Mac mini as well as desktop towers</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>On-site troubleshooting for office networks, peripherals, and displays</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Why choose us for desktop & Mac repair?</h2>
+        <p class="text-dark-secondary mb-4">
+          We combine bench-based diagnostics with mobile service calls, so you get the right option for every fault. Our team regularly works on the latest Apple silicon devices as well as legacy Intel hardware, giving you continuity of care regardless of age.
+        </p>
+        <p class="text-dark-secondary">
+          Every repair includes clear communication, photo/video updates when helpful, and optional preventative maintenance to stop issues recurring. Need the machine collected? We can arrange pickup from your home or office anywhere within our 40‑minute radius.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Proactive maintenance plans</h3>
+          <p class="text-dark-secondary">
+            Looking after multiple workstations or creative suites? Ask about quarterly health checks that keep firmware up to date, verify backups, and ensure thermal performance stays within spec.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Book a Repair
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+
+

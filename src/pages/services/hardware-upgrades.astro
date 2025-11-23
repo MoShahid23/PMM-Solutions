@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Hardware Upgrades';
+const serviceDescription = 'Boost the speed and lifespan of your computers with professional SSD, RAM, GPU, and component upgrades. Ideal for creative pros, gamers, and business users.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Can you upgrade both desktops and laptops?',
+    answer: 'Yes. We work on gaming rigs, office desktops, iMacs, MacBooks (where components are serviceable), and mini PCs.',
+  },
+  {
+    question: 'Do upgrades void warranty?',
+    answer: 'We follow manufacturer guidelines. Many upgrades (e.g., RAM, SSD) are user-serviceable and keep warranty intact when done properly.',
+  },
+  {
+    question: 'Can you clone my data to a new SSD?',
+    answer: 'Absolutely. We clone your existing drive, expand partitions if needed, and verify bootability before handing it back.',
+  },
+  {
+    question: 'Do you supply parts?',
+    answer: 'We can source high-quality components or install parts you already own, advising on compatibility either way.',
+  },
+  {
+    question: 'How long does an upgrade take?',
+    answer: 'Simple RAM/SSD upgrades are often same-day. GPU or motherboard work typically completes within 2–3 days including stress testing.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/hardware-upgrades`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            Popular upgrade paths
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>SSD migrations and NVMe installations for blazing-fast boot times</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>RAM expansion for designers, CAD users, and heavy multitaskers</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>GPU upgrades for video editing, 3D rendering, or gaming PCs</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Power supply replacements and cable management for stability</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            Performance validation
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Thermal profiling and fan curve adjustments</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>BIOS/EFI updates and stability testing before delivery</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Benchmark reports so you can see improvement at a glance</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Cable tidy and dust clean for better airflow</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Consult first, upgrade second</h3>
+          <p class="text-dark-secondary">
+            Not sure what to upgrade? Book a consultation where we analyse bottlenecks, predict ROI, and recommend a roadmap that suits your workload and budget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Plan an Upgrade
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+
+

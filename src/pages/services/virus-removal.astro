@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Virus & Malware Removal';
+const serviceDescription = 'Complete malware removal, ransomware cleanup, and security hardening for Windows and macOS devices. Fast response on-site or remotely.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Can you remove ransomware without losing data?',
+    answer: 'We isolate the infection, attempt decryption or data recovery, then rebuild your system with verified backups. We also harden security to prevent repeat incidents.',
+  },
+  {
+    question: 'Do you provide antivirus recommendations?',
+    answer: 'Yes. We install managed security suites, configure automatic updates, and provide guidance tailored to home users or small businesses.',
+  },
+  {
+    question: 'What if my browser keeps redirecting?',
+    answer: 'We clean malicious extensions, reset browser profiles, and scan the OS for persistence mechanisms that re-infect the browser.',
+  },
+  {
+    question: 'Is remote cleanup available?',
+    answer: 'Many infections can be removed via secure remote session. When hardware access is required, we offer collection or on-site visits across South London.',
+  },
+  {
+    question: 'Do you assist with incident reports?',
+    answer: 'We can produce a written remediation report summarizing findings, steps taken, and recommended policies for insurance or compliance needs.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/virus-removal`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+          What we remove
+        </h2>
+        <ul class="space-y-3 text-dark-secondary mt-4">
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Ransomware, spyware, keyloggers, and crypto miners</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Fake antivirus pop-ups, browser hijackers, and adware bundles</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Email account compromises, malicious Outlook plugins, and phishing tools</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Persistence mechanisms in startup folders, scheduled tasks, and registries</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Aftercare & prevention</h2>
+        <p class="text-dark-secondary mb-4">
+          Once your system is clean, we install reputable protection, enable automatic patching, and show you how to spot malicious emails or downloads. Businesses can opt into ongoing monitoring for extra peace of mind.
+        </p>
+        <p class="text-dark-secondary">
+          We also recommend secure backup strategies so you always have a clean restore point if disaster strikes again.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Same-day emergency response</h3>
+          <p class="text-dark-secondary">
+            Need help right now? Call us for priority scheduling. We can often start remote remediation within minutes or dispatch an engineer the same day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Book Malware Removal
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+
+

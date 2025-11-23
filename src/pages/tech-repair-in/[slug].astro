@@ -214,10 +214,6 @@ const faqData = [
     answer: `We offer laptop repair, phone repair, and data recovery in ${locationName}. This includes screen replacement, battery replacement, software issues, and more.`,
   },
   {
-    question: `Is there an extra charge for on-site service in ${locationName}?`,
-    answer: `There's a small travel fee for on-site service in ${locationName}, always included transparently in your quote.`,
-  },
-  {
     question: `Can you repair business equipment in ${locationName}?`,
     answer: `Yes, we repair office computers, phones, and other business equipment on-site for companies across ${locationName}.`,
   },
@@ -356,15 +352,15 @@ const faqData = [
           <p class="text-sm text-dark-secondary">Saturday appointments available</p>
         </div>
 
-        <!-- Apple Authorized -->
+        <!-- Experienced Technicians -->
         <div class="text-center">
           <div class="flex justify-center mb-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
             </svg>
           </div>
-          <h3 class="font-semibold text-dark-primary mb-1">Apple Authorized</h3>
-          <p class="text-sm text-dark-secondary">Certified Apple device repairs</p>
+          <h3 class="font-semibold text-dark-primary mb-1">Experienced Technicians</h3>
+          <p class="text-sm text-dark-secondary">Seasoned experts for complex repairs</p>
         </div>
 
         <!-- Fixed Pricing -->
@@ -415,58 +411,89 @@ const faqData = [
   </section>
 
   <!-- Location-Specific Content Section (Replaces Service Areas) -->
+  <!-- Location-Specific Content Section (Replaces Service Areas) -->
   <section class="py-9 bg-dark-darker scroll-reveal">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <div class="flex justify-center mb-8">
           <div class="w-16 h-1 bg-accent-primary rounded-full"></div>
         </div>
-        <h2 class="text-4xl font-bold text-center mb-4 text-dark-primary">Tech Repair Services in {locationName}</h2>
-        
+
+        <h2 class="text-4xl font-bold text-center mb-6 text-dark-primary">
+          Why we work in {locationName}
+        </h2>
+
         {location.intro && (
-          <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-6 shadow-card bg-dark-card border-dark">
-            <p class="text-dark-secondary text-lg leading-relaxed">{location.intro}</p>
-          </div>
-        )}
-        
-        {location.localHighlight && (
-          <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-8 shadow-card bg-dark-card border-dark">
-            <h3 class="text-xl font-bold mb-3 text-dark-primary">Local Coverage in {locationName}</h3>
-            <p class="text-dark-secondary leading-relaxed">
-              <strong class="text-accent-primary">Service Areas:</strong> {location.localHighlight}
-            </p>
-          </div>
+          <p class="text-dark-secondary text-lg leading-relaxed mb-4">
+            {location.intro}
+          </p>
         )}
 
-        <div class="rounded-lg p-6 border-l-4 border-accent-primary mb-6 shadow-card bg-dark-card border-dark">
-          <h3 class="text-xl font-bold mb-4 text-dark-primary">Why Choose On-Site Service in {locationName}</h3>
-          <ul class="text-dark-secondary space-y-3">
-            <li class="flex items-start">
-              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
-              <span>No need to travel — our technicians come to your home or office in {locationName}</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
-              <span>Minimize downtime for home or business devices with same-day service when available</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
-              <span>Transparent pricing and quick turnaround for all {locationName} customers</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
-              <span>Expert repair services for laptops, phones, and data recovery throughout {locationName}</span>
-            </li>
-        </ul>
+        {location.localHighlight && (
+          <p class="text-dark-secondary leading-relaxed mb-10">
+            {location.localHighlight}
+          </p>
+        )}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          <div class="rounded-lg p-6 bg-dark-card border border-dark shadow-card">
+            <h3 class="text-xl font-bold mb-4 text-dark-primary">
+              Common issues we fix
+            </h3>
+            <ul class="text-dark-secondary space-y-2">
+              <li class="flex items-start">
+                <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+                <span>Slow or unresponsive laptops and desktop PCs</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+                <span>Cracked or faulty phone and tablet screens</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+                <span>Battery, charging and overheating problems</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+                <span>Data recovery from failed or damaged drives</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-accent-primary mr-3 text-lg font-bold mt-0.5">•</span>
+                <span>Wi-Fi, email and software issues at home or in the office</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="rounded-lg p-6 bg-dark-card border border-dark shadow-card">
+            <h3 class="text-xl font-bold mb-4 text-dark-primary">
+              How our on-site service works
+            </h3>
+            <ol class="text-dark-secondary space-y-3 list-decimal list-inside">
+              <li>
+                <strong>Get in touch</strong> – tell us what’s gone wrong and where you’re based in {locationName}.
+              </li>
+              <li>
+                <strong>Book a visit</strong> – we agree a convenient time and confirm any likely costs up front.
+              </li>
+              <li>
+                <strong>We come to you</strong> – a technician visits your home or workplace to diagnose and repair the issue.
+              </li>
+              <li>
+                <strong>Follow-up support</strong> – if anything isn’t quite right afterwards, we’re easy to reach and happy to help.
+              </li>
+            </ol>
+          </div>
         </div>
 
         <div class="rounded-lg p-6 bg-dark-card border border-dark shadow-card">
-          <h3 class="text-xl font-bold mb-4 text-dark-primary">Professional Tech Repair in {locationName}</h3>
-          <p class="text-dark-secondary leading-relaxed mb-4">
-            Whether you're in {locationName} town centre or surrounding neighborhoods, our mobile technicians provide fast, reliable on-site repair services. We specialize in laptop repair, phone screen replacement, data recovery, and more — all delivered right to your door.
+          <h3 class="text-xl font-bold mb-4 text-dark-primary">
+            Who we help in {locationName}
+          </h3>
+          <p class="text-dark-secondary leading-relaxed mb-3">
+            We work with home users, families, freelancers and small businesses across the area. Whether you rely on a single laptop for work or run several machines in a busy household, we aim to keep your devices running smoothly with clear communication and no jargon.
           </p>
           <p class="text-dark-secondary leading-relaxed">
-            Our {locationName} service area includes both residential and business customers. We understand that downtime isn't an option, which is why we offer same-day appointments when possible and transparent pricing with no hidden fees.
+            If you’re not sure whether your problem is something we deal with, just ask – no job is too small, and we’re always happy to give straightforward advice before you book a visit.
           </p>
         </div>
       </div>

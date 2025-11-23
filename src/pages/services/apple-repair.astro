@@ -1,0 +1,164 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Apple Device Repair';
+const serviceDescription = 'Specialist repair for MacBook, iMac, iPad, iPhone, Apple Watch, and legacy Apple hardware. Genuine-quality parts, board-level fixes, and same-day options.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['Morden', 'Wimbledon', 'Kingston', 'Sutton', 'Croydon', 'Epsom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Do you use genuine Apple parts?',
+    answer: 'We source genuine or OEM-quality parts for MacBook displays, batteries, keyboards, iPhone screens, and iPad digitizers. Every part is backed by warranty.',
+  },
+  {
+    question: 'Can you repair Apple silicon devices?',
+    answer: 'Yes. We work on M1, M2, and M3-based MacBooks and iMacs, performing board-level diagnostics, liquid damage treatment, and data recovery.',
+  },
+  {
+    question: 'Is data safe during repair?',
+    answer: 'Your information is protected with secure workflows, NDA availability, and encrypted storage. We clone drives before risky procedures and can assist with iCloud backup.',
+  },
+  {
+    question: 'Do you support business fleets?',
+    answer: 'We provide rapid turnaround and asset tracking for agencies and SMEs running Apple hardware fleets, including DEP/MDM configuration support.',
+  },
+  {
+    question: 'How quickly can I get my Apple device repaired?',
+    answer: 'Many iPhone and MacBook repairs are completed same-day. More complex logic board work typically takes 2–4 business days with updates throughout.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/apple-repair`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            Mac & iPad services
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Liquid damage treatment for MacBook Air/Pro with ultrasonic cleaning</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Battery, keyboard, trackpad, and display replacements with calibration</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Logic board repairs, SSD upgrades, and T2/Apple silicon data recovery</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>iMac/iPad glass replacement, hinge repair, and thermal servicing</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+            iPhone & Apple Watch services
+          </h2>
+          <ul class="space-y-3 text-dark-secondary mt-4">
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Genuine-quality OLED screens, batteries, speakers, and camera modules</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Face ID, TrueDepth, and charging port repairs with calibration tools</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Apple Watch screen/glass changes and digital crown fixes</span></li>
+            <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Data rescue for damaged devices plus secure device recycling</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary">Why Apple owners choose PMM Solutions</h2>
+        <p class="text-dark-secondary mb-4">
+          We understand the cost of downtime when your MacBook or iPhone is mission critical. Our technicians use Apple-specific tooling, run AST diagnostics, and document every step so you know exactly what was done and why.
+        </p>
+        <p class="text-dark-secondary">
+          Prefer on-site service? We travel throughout South London and Surrey, offering collection, drop-off, or in-home repairs for your Apple devices. Remote support sessions are also available for software and configuration issues.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Device migration & tune-ups</h3>
+          <p class="text-dark-secondary">
+            Upgrading to a new Mac? We can migrate data, configure Apple ID, set up Time Machine, and optimize performance so everything feels familiar from day one.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Book Apple Repair
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>

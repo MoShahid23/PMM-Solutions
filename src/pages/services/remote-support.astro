@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import FAQ from '../../components/FAQ.astro';
+import { siteConfig, businessInfo } from '../../config';
+
+const serviceName = 'Remote IT Support';
+const serviceDescription = 'Secure remote desktop assistance for quick fixes, software installs, and troubleshooting without waiting for an engineer to arrive.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: serviceName,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: businessInfo.name,
+    telephone: businessInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: businessInfo.address.street,
+      addressLocality: businessInfo.address.city,
+      postalCode: businessInfo.address.postcode,
+      addressCountry: businessInfo.address.country,
+    },
+  },
+  areaServed: ['United Kingdom'],
+  description: serviceDescription,
+};
+
+const faqData = [
+  {
+    question: 'Is the remote session secure?',
+    answer: 'Yes. We use encrypted connections and one-time session codes. You can see everything we do and disconnect at any time.',
+  },
+  {
+    question: 'What issues can you solve remotely?',
+    answer: 'Software errors, email problems, printer setup, cloud backups, security scans, updates, and user training are all perfect for remote sessions.',
+  },
+  {
+    question: 'Do I need to install anything?',
+    answer: 'We send a secure download link for our support tool. Once the session ends, the tool can be removed with a click.',
+  },
+  {
+    question: 'What are your response times?',
+    answer: 'Remote sessions are often available the same day—within hours for urgent requests when schedules permit.',
+  },
+  {
+    question: 'Can businesses buy remote support bundles?',
+    answer: 'Yes. We offer retainer blocks with priority response and monthly reporting for businesses that rely on quick remote help.',
+  },
+];
+---
+
+<Layout 
+  title={serviceName}
+  description={serviceDescription}
+  canonical={`${siteConfig.url}/services/remote-support`}
+>
+  <StructuredData schema={serviceSchema} />
+
+  <section class="py-9 bg-dark-section">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <div class="flex mb-6">
+          <div class="w-32 h-1.5 bg-accent-primary rounded-full"></div>
+        </div>
+        <h1 class="text-4xl font-bold mb-4 text-dark-primary">{serviceName}</h1>
+        <p class="text-xl text-dark-secondary mb-8">{serviceDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
+          Perfect for
+        </h2>
+        <ul class="space-y-3 text-dark-secondary mt-4">
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Home workers needing quick fixes without downtime</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Small teams with distributed staff and laptops</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Urgent configuration changes, software installs, and updates</span></li>
+          <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Training sessions where we guide you through new tools</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-section scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="border-l-4 border-accent-primary p-6 mb-12 rounded-lg shadow-card bg-dark-card border-dark">
+          <h3 class="text-xl font-bold mb-2 text-dark-primary">Simple booking process</h3>
+          <p class="text-dark-secondary">
+            Call, email, or use our contact form. We schedule a slot, send the secure session link, and keep you updated throughout. Billing is transparent with per-session or block pricing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <FAQ questions={faqData} variant="dark" />
+        <div class="mt-12 text-center">
+          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+            Request Remote Support
+          </a>
+          <a href="/services" class="btn-secondary inline-block">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</Layout>
+
+

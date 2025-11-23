@@ -76,9 +76,9 @@ export const serviceAreas = [
     latitude: 51.36,
     longitude: -0.1917,
     intro:
-      "Sutton’s mix of residential and business districts makes it a key service area for our mobile technicians. We handle computer repairs, data recovery, and phone issues quickly on-site.",
+      "Sutton has a mix of family homes, commuters and small businesses, so we spend a lot of time here helping people keep their laptops, phones and PCs running smoothly. Most problems can be sorted on-site without you needing to visit a shop.",
     localHighlight:
-      "Our Sutton visits cover areas near Sutton High Street, Carshalton Beeches, and Cheam, offering same-day availability where possible.",
+      "Our Sutton visits cover areas near Sutton High Street, Carshalton Beeches and Cheam, with convenient appointment times and same-day availability where possible.",
   },
   {
     name: "Croydon",
@@ -88,7 +88,7 @@ export const serviceAreas = [
     intro:
       "Croydon’s fast-paced tech scene and growing business sector mean downtime isn’t an option — that’s why our technicians provide prompt, on-site repair solutions across the area.",
     localHighlight:
-      "We regularly work with clients around East Croydon, South Croydon, and Purley, providing reliable computer and phone repair services on demand.",
+      "We regularly work with clients around East Croydon, South Croydon and Purley, providing reliable computer and phone repair services on demand.",
   },
   {
     name: "Epsom",
@@ -96,9 +96,9 @@ export const serviceAreas = [
     latitude: 51.3308,
     longitude: -0.269,
     intro:
-      "Known for its racecourse and family-friendly neighborhoods, Epsom is a growing area we proudly serve with mobile computer and phone repairs right at your doorstep.",
+      "Known for its racecourse and family-friendly neighbourhoods, Epsom is a growing area we proudly serve with mobile computer and phone repairs right at your doorstep.",
     localHighlight:
-      "We cover Epsom town centre, Ewell, and surrounding postcodes, providing same-day appointments where possible.",
+      "We cover Epsom town centre, Ewell and surrounding postcodes, providing same-day appointments where possible.",
   },
   {
     name: "Ewell",
@@ -106,9 +106,9 @@ export const serviceAreas = [
     latitude: 51.3494,
     longitude: -0.2494,
     intro:
-      "Ewell’s residential communities rely on us for dependable computer, phone, and data recovery services — all delivered on-site by our expert technicians.",
+      "Ewell’s residential communities rely on us for dependable computer, phone and data recovery services — all delivered on-site by our expert technicians.",
     localHighlight:
-      "We regularly assist customers near Ewell Village, West Ewell, and Stoneleigh, ensuring quick turnaround and fair pricing.",
+      "We regularly assist customers near Ewell Village, West Ewell and Stoneleigh, ensuring quick turnaround and fair pricing.",
   },
   {
     name: "Mitcham",
@@ -116,7 +116,7 @@ export const serviceAreas = [
     latitude: 51.4032,
     longitude: -0.1683,
     intro:
-      "Our Mitcham clients trust us for fast, affordable repairs — whether it’s a cracked screen, failing hard drive, or business laptop that needs urgent attention.",
+      "Our Mitcham clients trust us for fast, affordable repairs — whether it’s a cracked screen, failing hard drive or business laptop that needs urgent attention.",
     localHighlight:
       "We cover all of Mitcham, including Colliers Wood and Figges Marsh, offering both pickup and on-site options for maximum convenience.",
   },
@@ -128,7 +128,7 @@ export const serviceAreas = [
     intro:
       "From busy Tooting Broadway to quiet residential streets, our mobile team provides fast, expert repair service without the hassle of visiting a shop.",
     localHighlight:
-      "We frequently visit customers near Tooting Bec, Balham, and Earlsfield, handling everything from laptop issues to phone repairs.",
+      "We frequently visit customers near Tooting Bec, Balham and Earlsfield, handling everything from laptop issues to phone repairs.",
   },
   {
     name: "New Malden",
@@ -138,7 +138,7 @@ export const serviceAreas = [
     intro:
       "New Malden’s thriving community of home users and small businesses depends on us for reliable computer and phone repair services, delivered on-site or via quick collection.",
     localHighlight:
-      "We serve customers across New Malden, Motspur Park, and Coombe, ensuring seamless tech support across the area.",
+      "We serve customers across New Malden, Motspur Park and Coombe, ensuring seamless tech support across the area.",
   },
   {
     name: "Surbiton",
@@ -148,7 +148,7 @@ export const serviceAreas = [
     intro:
       "Surbiton’s growing mix of young professionals and businesses makes it a key area for our on-site repair services — from laptops to smartphones and beyond.",
     localHighlight:
-      "We cover the Surbiton town centre, Berrylands, and Tolworth, offering quick appointments and expert diagnostics.",
+      "We cover Surbiton town centre, Berrylands and Tolworth, offering quick appointments and expert diagnostics.",
   },
   {
     name: "Leatherhead",
@@ -158,7 +158,7 @@ export const serviceAreas = [
     intro:
       "Our Leatherhead clients value efficiency — we provide same-day tech repairs for both residential and business customers, right where they need it.",
     localHighlight:
-      "From Fetcham to Ashtead, we offer reliable laptop, PC, and phone repair across the Leatherhead area with minimal downtime.",
+      "From Fetcham to Ashtead, we offer reliable laptop, PC and phone repair across the Leatherhead area with minimal downtime.",
   },
   {
     name: "Dorking",
@@ -166,9 +166,9 @@ export const serviceAreas = [
     latitude: 51.2329,
     longitude: -0.3338,
     intro:
-      "Dorking’s mix of rural and town life makes it a perfect fit for our mobile tech repair model — fast, flexible, and on your doorstep.",
+      "Dorking’s mix of rural and town life makes it a perfect fit for our mobile tech repair model — fast, flexible and on your doorstep.",
     localHighlight:
-      "We regularly serve areas near Dorking High Street, Westcott, and North Holmwood, helping both households and small offices with their devices.",
+      "We regularly serve areas near Dorking High Street, Westcott and North Holmwood, helping both households and small offices with their devices.",
   },
   {
     name: "Banstead",
@@ -178,7 +178,7 @@ export const serviceAreas = [
     intro:
       "Banstead’s quiet residential setting doesn’t mean you should wait days for repairs — our on-site team brings professional computer and phone repair straight to your home.",
     localHighlight:
-      "We handle service calls across Banstead Village, Nork, and Chipstead, offering same-day and weekend appointments where available.",
+      "We handle service calls across Banstead Village, Nork and Chipstead, offering same-day and weekend appointments where available.",
   },
   {
     name: "Carshalton",
@@ -186,9 +186,9 @@ export const serviceAreas = [
     latitude: 51.3657,
     longitude: -0.1675,
     intro:
-      "Carshalton customers benefit from our local reach — we provide fast on-site repair for laptops, phones, and PCs throughout the area.",
+      "Carshalton customers benefit from our local reach — we provide fast on-site repair for laptops, phones and PCs throughout the area.",
     localHighlight:
-      "We serve homes and offices across Carshalton Beeches, Carshalton Village, and nearby Sutton, ensuring quick turnaround times.",
+      "We serve homes and offices across Carshalton Beeches, Carshalton Village and nearby Sutton, ensuring quick turnaround times.",
   },
   {
     name: "Wallington",
@@ -196,9 +196,9 @@ export const serviceAreas = [
     latitude: 51.3608,
     longitude: -0.1508,
     intro:
-      "Wallington’s busy residents rely on our on-site tech repair service to save time and avoid the hassle of traveling to a store.",
+      "Wallington’s busy residents rely on our on-site tech repair service to save time and avoid the hassle of travelling to a store.",
     localHighlight:
-      "We cover Wallington town centre, Beddington, and nearby Croydon suburbs — all with the same professional care and fair pricing.",
+      "We cover Wallington town centre, Beddington and nearby Croydon suburbs — all with the same professional care and fair pricing.",
   },
   {
     name: "Cheam",
@@ -208,7 +208,7 @@ export const serviceAreas = [
     intro:
       "Cheam’s combination of family homes and small offices makes it a perfect area for our mobile repair team, offering fast service at your convenience.",
     localHighlight:
-      "We regularly help customers near Cheam Village, North Cheam, and Sutton Borders with computer, laptop, and phone repairs.",
+      "We regularly help customers near Cheam Village, North Cheam and Sutton Borders with computer, laptop and phone repairs.",
   },
   {
     name: "Raynes Park",
@@ -218,7 +218,7 @@ export const serviceAreas = [
     intro:
       "Raynes Park residents benefit from quick access to our on-site and in-store repair services, with technicians often nearby handling same-day appointments.",
     localHighlight:
-      "We frequently serve clients near Cannon Hill, Cottenham Park, and Wimbledon Chase, offering fast and reliable computer and phone repair.",
+      "We frequently serve clients near Cannon Hill, Cottenham Park and Wimbledon Chase, offering fast and reliable computer and phone repair.",
   },
 ];
 
@@ -243,10 +243,16 @@ export const services = [
     icon: "database",
   },
   {
-    name: "Computer Repair",
+    name: "Computer & Mac Repair",
     slug: "computer-repair",
-    description: "Desktop PC repair and diagnostics. Hardware troubleshooting, component replacement, power supply repairs, and motherboard diagnostics for home and office computers.",
+    description: "Expert repair for Windows desktops, custom PCs, and Apple iMac/Mac mini systems. Component replacement, logic board diagnostics, power issues, and performance tuning for home and office machines.",
     icon: "desktop",
+  },
+  {
+    name: "Apple Device Repair",
+    slug: "apple-repair",
+    description: "Dedicated support for MacBook, iMac, iPad, iPhone, and Apple Watch. Genuine-quality parts, board-level repairs, data recovery, and same-day service options for Apple users.",
+    icon: "device",
   },
   {
     name: "Virus & Malware Removal",
@@ -273,22 +279,10 @@ export const services = [
     icon: "speedometer",
   },
   {
-    name: "Network Setup",
-    slug: "network-setup",
-    description: "Home and office network installation and configuration. WiFi setup, router configuration, network security, and connectivity troubleshooting.",
-    icon: "network",
-  },
-  {
     name: "Remote Support",
     slug: "remote-support",
     description: "Virtual IT support and troubleshooting. Remote desktop assistance for software issues, configuration help, and technical guidance without leaving your home.",
     icon: "computer",
-  },
-  {
-    name: "Printer Services",
-    slug: "printer-services",
-    description: "Printer repair, setup, and troubleshooting. Support for all major printer brands including HP, Canon, Epson, and Brother. Installation and configuration included.",
-    icon: "printer",
   },
   {
     name: "Software Installation",
