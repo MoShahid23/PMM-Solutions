@@ -140,6 +140,10 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(148, 163, 184, 0.2);
       }
+
+      .dropdown-surface .scroll-shadow-container-dark {
+        background-color: transparent !important;
+      }
     </style>
 
     <!-- Google Analytics 4 -->
@@ -164,7 +168,7 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
           <a href="/" class="transition-all duration-200 hover:opacity-80">
             <Logo variant="minimal" />
           </a>
-          <ul class="hidden md:flex gap-8 items-center">
+          <ul class="hidden lg:flex gap-8 items-center">
             <li><a href="/" class="text-dark-primary hover:text-accent-primary transition-colors duration-200 font-medium">Home</a></li>
             
             <!-- Services Dropdown -->
@@ -260,7 +264,7 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
           </ul>
 
           <!-- Phone & Social Icons (Desktop) -->
-          <div class="hidden md:flex items-center gap-4">
+          <div class="hidden lg:flex items-center gap-4">
             <!-- Phone Button -->
             <a
               href={`tel:${businessInfo.phone}`}
@@ -311,15 +315,16 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
           </div>
 
           <!-- Mobile: Phone Icon & Menu Button -->
-          <div class="flex md:hidden items-center gap-2">
+          <div class="flex lg:hidden items-center gap-2">
             <a
               href={`tel:${businessInfo.phone}`}
-              class="p-2 text-accent-primary hover:bg-bg-elevated rounded-lg transition-colors duration-200"
+              class="flex items-center gap-2 bg-accent-primary text-white px-3 py-2 rounded-xl hover:bg-accent-primary-hover transition-all duration-200 shadow-soft text-sm font-medium"
               aria-label="Call us"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
               </svg>
+              <span>{businessInfo.phone}</span>
             </a>
             <button
               id="mobile-menu-button"
@@ -334,23 +339,20 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
         </div>
                 
                 <!-- Mobile Menu -->
-                <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
+                <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out">
                   <ul class="space-y-2">
                     <li><a href="/" class="block py-3 px-2 text-dark-primary hover:text-accent-primary hover:bg-white/10 rounded-lg transition-all duration-300 font-medium min-h-[48px] flex items-center">Home</a></li>
                     <li>
-                      <div class="flex items-center justify-between py-3 px-2 hover:bg-white/10 rounded-lg transition-all duration-300 min-h-[48px]">
-                        <a href="/services" class="flex-1 text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-300">Services</a>
-                        <button
-                          id="mobile-services-toggle"
-                          class="p-3 text-dark-primary hover:text-accent-primary transition-all duration-300 rounded-lg hover:bg-white/10 min-w-[48px] min-h-[48px] flex items-center justify-center"
-                          aria-label="Toggle services menu"
-                          aria-expanded="false"
-                        >
-                          <svg id="mobile-services-icon" class="w-5 h-5 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                          </svg>
-                        </button>
-                      </div>
+                      <a 
+                        href="/services" 
+                        id="mobile-services-link"
+                        class="flex items-center justify-between py-3 px-2 hover:bg-white/10 rounded-lg transition-all duration-300 min-h-[48px] text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-300"
+                      >
+                        <span>Services</span>
+                        <svg id="mobile-services-icon" class="w-5 h-5 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </a>
                       <ul id="mobile-services-menu" class="hidden ml-2 mt-1 space-y-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out bg-dark-darker rounded-lg border-l-4 border-accent-primary/50">
                         {services.map((service) => (
                           <li>
@@ -359,22 +361,27 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
                             </a>
                           </li>
                         ))}
+                        <li class="border-t border-gray-700 mt-2 pt-2">
+                          <a
+                            href="/services"
+                            class="block py-3 px-4 text-accent-primary hover:text-accent-primary-hover font-semibold transition-all duration-300 min-h-[48px] flex items-center"
+                          >
+                            View All Services →
+                          </a>
+                        </li>
                       </ul>
                     </li>
                     <li>
-                      <div class="flex items-center justify-between py-3 px-2 hover:bg-white/10 rounded-lg transition-all duration-300 min-h-[48px]">
-                        <a href="/locations" class="flex-1 text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-300">Service Areas</a>
-                        <button
-                          id="mobile-areas-toggle"
-                          class="p-3 text-dark-primary hover:text-accent-primary transition-all duration-300 rounded-lg hover:bg-white/10 min-w-[48px] min-h-[48px] flex items-center justify-center"
-                          aria-label="Toggle service areas menu"
-                          aria-expanded="false"
-                        >
-                          <svg id="mobile-areas-icon" class="w-5 h-5 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                          </svg>
-                        </button>
-                      </div>
+                      <a 
+                        href="/locations" 
+                        id="mobile-areas-link"
+                        class="flex items-center justify-between py-3 px-2 hover:bg-white/10 rounded-lg transition-all duration-300 min-h-[48px] text-dark-primary hover:text-accent-primary font-semibold transition-colors duration-300"
+                      >
+                        <span>Service Areas</span>
+                        <svg id="mobile-areas-icon" class="w-5 h-5 transition-transform duration-300 ease-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </a>
                       <ul id="mobile-areas-menu" class="hidden ml-2 mt-1 space-y-1 max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out bg-dark-darker rounded-lg border-l-4 border-accent-primary/50">
                         {serviceAreas.map((area) => (
                           <li>
@@ -383,6 +390,14 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
                             </a>
                           </li>
                         ))}
+                        <li class="border-t border-gray-700 mt-2 pt-2">
+                          <a
+                            href="/locations"
+                            class="block py-3 px-4 text-accent-primary hover:text-accent-primary-hover font-semibold transition-all duration-300 min-h-[48px] flex items-center"
+                          >
+                            View All Service Areas →
+                          </a>
+                        </li>
                       </ul>
                     </li>
                     <li><a href="/about" class="block py-3 px-2 text-dark-primary hover:text-accent-primary hover:bg-white/10 rounded-lg transition-all duration-300 font-medium min-h-[48px] flex items-center">About</a></li>
@@ -462,12 +477,12 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
       }
 
       // Services dropdown toggle (mobile)
-      const servicesToggle = document.getElementById('mobile-services-toggle');
+      const servicesLink = document.getElementById('mobile-services-link');
       const servicesMenu = document.getElementById('mobile-services-menu');
       const servicesIcon = document.getElementById('mobile-services-icon');
 
-      if (servicesToggle && servicesMenu && servicesIcon) {
-        servicesToggle.addEventListener('click', (e) => {
+      if (servicesLink && servicesMenu && servicesIcon) {
+        servicesLink.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
 
@@ -475,10 +490,10 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
 
           if (isOpen) {
             // Close: animate out, then hide
-            servicesMenu.classList.remove('max-h-96', 'opacity-100');
-            servicesMenu.classList.add('max-h-0', 'opacity-0');
+            servicesMenu.classList.remove('max-h-96', 'opacity-100', 'overflow-y-auto');
+            servicesMenu.classList.add('max-h-0', 'opacity-0', 'overflow-hidden');
             servicesIcon.classList.remove('rotate-180');
-            servicesToggle.setAttribute('aria-expanded', 'false');
+            servicesLink.setAttribute('aria-expanded', 'false');
 
             setTimeout(() => {
               servicesMenu.classList.add('hidden');
@@ -487,21 +502,21 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
             // Open: remove hidden, then animate in
             servicesMenu.classList.remove('hidden');
             void servicesMenu.offsetHeight;
-            servicesMenu.classList.remove('max-h-0', 'opacity-0');
-            servicesMenu.classList.add('max-h-96', 'opacity-100');
+            servicesMenu.classList.remove('max-h-0', 'opacity-0', 'overflow-hidden');
+            servicesMenu.classList.add('max-h-96', 'opacity-100', 'overflow-y-auto');
             servicesIcon.classList.add('rotate-180');
-            servicesToggle.setAttribute('aria-expanded', 'true');
+            servicesLink.setAttribute('aria-expanded', 'true');
           }
         });
       }
 
       // Service Areas dropdown toggle (mobile)
-      const areasToggle = document.getElementById('mobile-areas-toggle');
+      const areasLink = document.getElementById('mobile-areas-link');
       const areasMenu = document.getElementById('mobile-areas-menu');
       const areasIcon = document.getElementById('mobile-areas-icon');
 
-      if (areasToggle && areasMenu && areasIcon) {
-        areasToggle.addEventListener('click', (e) => {
+      if (areasLink && areasMenu && areasIcon) {
+        areasLink.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
 
@@ -512,7 +527,7 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
             areasMenu.classList.remove('max-h-96', 'opacity-100', 'overflow-y-auto');
             areasMenu.classList.add('max-h-0', 'opacity-0', 'overflow-hidden');
             areasIcon.classList.remove('rotate-180');
-            areasToggle.setAttribute('aria-expanded', 'false');
+            areasLink.setAttribute('aria-expanded', 'false');
 
             setTimeout(() => {
               areasMenu.classList.add('hidden');
@@ -524,7 +539,7 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
             areasMenu.classList.remove('max-h-0', 'opacity-0', 'overflow-hidden');
             areasMenu.classList.add('max-h-96', 'opacity-100', 'overflow-y-auto');
             areasIcon.classList.add('rotate-180');
-            areasToggle.setAttribute('aria-expanded', 'true');
+            areasLink.setAttribute('aria-expanded', 'true');
           }
         });
       }
@@ -607,9 +622,9 @@ const url = canonical || `${siteConfig.url}${Astro.url.pathname}`;
       <slot />
     </main>
 
-    <footer class="bg-dark-darker mt-24">
+    <footer class="bg-dark-darker mt-0 border-t border-gray-300/20">
       <div class="container mx-auto px-6 lg:px-12 xl:px-16 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-8">
           <!-- About Us Section -->
           <div>
             <h3 class="text-dark-primary text-lg font-semibold mb-4">About us</h3>
