@@ -2,11 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import LocationCard from '../../components/LocationCard.astro';
 import { siteConfig, serviceAreas } from '../../config';
+import { withBase } from '../../utils/url';
 ---
 
 <Layout 
   title="Service Areas"
-  description="We provide on-site tech repair services in Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom and surrounding areas within a 40-minute radius."
+  description="We provide on-site tech repair services throughout South London and surrounding regions. Contact now to inquire if unsure."
   canonical={`${siteConfig.url}/locations`}
 >
   <!-- Hero Section -->
@@ -18,8 +19,7 @@ import { siteConfig, serviceAreas } from '../../config';
         </div>
         <h1 class="text-4xl font-bold mb-4 text-dark-primary">Our Service Areas</h1>
         <p class="text-xl text-dark-secondary">
-          We provide professional on-site tech repair services throughout South London, Surrey and surrounding areas within a 40-minute radius of Morden. 
-          Fast, convenient service at your location.
+          We provide professional on-site tech repair services throughout South London and surrounding regions. Contact now to inquire if unsure. Fast, convenient service at your location.
         </p>
       </div>
     </div>
@@ -82,13 +82,13 @@ import { siteConfig, serviceAreas } from '../../config';
           <h3 class="text-xl font-bold mb-2 text-dark-primary">Coverage Area</h3>
           <p class="text-dark-secondary">
             We serve Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom, and surrounding areas. 
-            If you're unsure if we cover your area, please <a href="/contact" class="link-accent text-accent-primary">contact us</a> and we'll let you know.
+            If you're unsure if we cover your area, please <a href={withBase('/contact')} class="link-accent text-accent-primary">contact us</a> and we'll let you know.
           </p>
         </div>
 
         <div class="text-center mt-12">
           <a 
-            href="/contact" 
+            href={withBase('/contact')} 
             class="btn-primary glow-effect inline-block"
           >
             Schedule On-Site Service

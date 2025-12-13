@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/url';
+
 interface Props {
   name: string;
   slug: string;
@@ -28,7 +30,7 @@ const svgIcon = iconMap[icon] || iconMap.wrench;
 ---
 
 <a
-  href={`/services/${slug}`}
+  href={withBase(`/services/${slug}`)}
   class="block bg-dark-card rounded-2xl shadow-soft hover:shadow-soft-lg p-8 group transition-all duration-200 border border-dark hover:border-accent-subtle hover:-translate-y-1"
 >
   <div class="text-dark-primary mb-5 transition-transform duration-200 group-hover:scale-105" set:html={svgIcon}></div>

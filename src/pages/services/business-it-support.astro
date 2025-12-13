@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StructuredData from '../../components/StructuredData.astro';
 import FAQ from '../../components/FAQ.astro';
 import { siteConfig, businessInfo } from '../../config';
+import { withBase } from '../../utils/url';
 
 const serviceName = 'Business IT Support';
 const serviceDescription = 'Proactive IT support for small businesses across South London. Managed services, server care, Microsoft 365, networking, backup, and on-site call-outs.';
@@ -117,10 +118,10 @@ const faqData = [
       <div class="max-w-4xl mx-auto">
         <FAQ questions={faqData} variant="dark" />
         <div class="mt-12 text-center">
-          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+          <a href={withBase('/contact')} class="btn-primary glow-effect inline-block mr-4">
             Talk to Our IT Team
           </a>
-          <a href="/services" class="btn-secondary inline-block">
+          <a href={withBase('/services')} class="btn-secondary inline-block">
             View All Services
           </a>
         </div>

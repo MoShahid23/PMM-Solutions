@@ -180,6 +180,24 @@ Preview the production build locally before deploying.
 - [ ] Verify structured data with [Google Rich Results Test](https://search.google.com/test/rich-results)
 - [ ] Submit sitemap to Google Search Console
 
+## Deployment to GitHub Pages (Client Preview)
+
+Need a quick, shareable preview link? The project now ships with a `deploy` script that publishes the static build to a `gh-pages` branch while keeping your main branch clean.
+
+1. Update `site` in `astro.config.mjs` **and** `siteConfig.url` in `src/config.ts` to `https://<github-username>.github.io/<repository-name>` so canonical and asset URLs point to GitHub Pages.  
+   _Example for this repo_: `https://moshahid23.github.io/PMM-Solutions`
+2. Run the one-liner deploy script:
+
+   ```bash
+   npm run deploy
+   ```
+
+   This runs `astro build` and pushes the contents of `dist/` to the `gh-pages` branch via the `gh-pages` npm package.
+3. In your GitHub repository (`Settings → Pages`), set the source to the `gh-pages` branch and the `/` root folder.
+4. Wait for GitHub Pages to finish provisioning, then share `https://<github-username>.github.io/<repository-name>/` with your client.
+
+All internal links, images, and stylesheet references automatically respect the GitHub Pages base path, so the preview should look identical to production.
+
 ## SEO Features
 
 ### Structured Data (JSON-LD)

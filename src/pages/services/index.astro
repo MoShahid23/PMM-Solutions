@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceCard from '../../components/ServiceCard.astro';
 import { siteConfig, services } from '../../config';
+import { withBase } from '../../utils/url';
 ---
 
 <Layout 
@@ -78,7 +79,7 @@ import { siteConfig, services } from '../../config';
 
         <div class="text-center mt-12">
           <a 
-            href="/contact" 
+            href={withBase('/contact')} 
             class="btn-primary glow-effect inline-block"
           >
             Get a Free Quote

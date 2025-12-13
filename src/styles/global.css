@@ -31,7 +31,7 @@
     /* Dark theme - Border colors */
     --color-border-dark: #4B5563; /* gray-600 - borders on dark backgrounds */
 
-    /* Accent colors - professional blue (matching logo blue-600/blue-700) */
+    /* Accent colors */
     --color-accent-primary: #2563EB; /* blue-600 */
     --color-accent-primary-hover: #1D4ED8; /* blue-700 */
     --color-accent-secondary: #3B82F6; /* blue-500 */

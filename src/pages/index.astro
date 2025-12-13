@@ -6,6 +6,7 @@ import LocationCard from '../components/LocationCard.astro';
 import Testimonial from '../components/Testimonial.astro';
 import FAQ from '../components/FAQ.astro';
 import { siteConfig, businessInfo, services, serviceAreas } from '../config';
+import { withBase } from '../utils/url';
 
 // LocalBusiness JSON-LD schema
 const localBusinessSchema = {
@@ -66,6 +67,12 @@ const localBusinessSchema = {
       opens: businessInfo.openingHours.saturday.split('-')[0],
       closes: businessInfo.openingHours.saturday.split('-')[1],
     },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Sunday',
+      opens: businessInfo.openingHours.sunday.split('-')[0],
+      closes: businessInfo.openingHours.sunday.split('-')[1],
+    },
   ],
   priceRange: '$$',
   areaServed: serviceAreas.map((area) => ({
@@ -114,13 +121,13 @@ const faqData = [
               muted
               loop
               playsinline
-              poster="/hero-poster.webp"
+              poster={withBase('/hero-poster.webp')}
               aria-label="Technician repairing laptops and phones in a local workshop"
             >
-              <source src="/hero.mp4" type="video/mp4" />
+              <source src={withBase('/hero.mp4')} type="video/mp4" />
               <!-- Optional image fallback -->
               <img
-                src="/hero.webp"
+                src={withBase('/hero.webp')}
                 alt="Tech repair services in Morden and South London"
               />
             </video>
@@ -215,7 +222,7 @@ const faqData = [
             </svg>
           </div>
           <h3 class="font-semibold text-dark-primary mb-1">Local Service</h3>
-          <p class="text-sm text-dark-secondary">40-minute radius from Morden</p>
+          <p class="text-sm text-dark-secondary">South London and surrounding regions</p>
         </div>
 
         <!-- Weekend Available -->
@@ -277,7 +284,7 @@ const faqData = [
         ))}
       </div>
       <div class="text-center mt-16">
-        <a href="/services" class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
+        <a href={withBase('/services')} class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
           View All Services
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -309,7 +316,7 @@ const faqData = [
         ))}
       </div>
       <div class="text-center mt-16">
-        <a href="/locations" class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
+        <a href={withBase('/locations')} class="link-accent text-dark-primary font-semibold hover:text-accent-primary inline-flex items-center gap-2">
           View All Service Areas
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />

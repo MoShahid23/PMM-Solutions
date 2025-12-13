@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StructuredData from '../../components/StructuredData.astro';
 import FAQ from '../../components/FAQ.astro';
 import { siteConfig, businessInfo } from '../../config';
+import { withBase } from '../../utils/url';
 
 const serviceName = 'Computer & Mac Repair';
 const serviceDescription = 'Diagnostics and repair for Windows PCs, custom desktops, iMac and Mac mini systems. Logic board work, component swaps, and fast on-site service across South London.';
@@ -49,6 +50,22 @@ const faqData = [
     answer: 'All computer and Mac repairs include a 90-day workmanship warranty plus manufacturer warranty on any new components installed.',
   },
 ];
+
+// Common issues images - flexible structure for 1 or multiple images
+const commonIssues = [
+  {
+    imageWebp: "/computer-and-mac-repair/pc-upgrade.webp",
+    alt: "PC upgrade and repair service - computer hardware upgrades, component replacement, and desktop computer repair",
+    title: "PC Upgrade & Repair",
+    description: "Professional PC upgrades, component replacement, and desktop computer repair",
+  },
+  {
+    imageWebp: "/computer-and-mac-repair/broken-screen-imac.webp",
+    alt: "iMac repair service - broken screen replacement, iMac display repair, and Mac desktop computer repair",
+    title: "iMac Repair",
+    description: "Expert iMac screen replacement and Mac desktop computer repair",
+  },
+];
 ---
 
 <Layout 
@@ -88,7 +105,59 @@ const faqData = [
     </div>
   </section>
 
-  <section class="py-9 bg-dark-section scroll-reveal">
+  <!-- Common Issues We Fix Section -->
+  {commonIssues.length > 0 && (
+    <section class="py-9 bg-dark-section scroll-reveal">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="prose max-w-none mb-12">
+            <h2
+              class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block"
+            >
+              Common Repairs We Handle
+            </h2>
+            <p class="text-dark-secondary mt-4 max-w-3xl">
+              See examples of common PC and Mac repairs we handle. Our experienced technicians can diagnose and fix these problems quickly and affordably.
+            </p>
+          </div>
+          <div
+            class={`grid grid-cols-1 ${
+              commonIssues.length === 1
+                ? "md:grid-cols-1 max-w-2xl mx-auto"
+                : commonIssues.length === 2
+                ? "md:grid-cols-2"
+                : "md:grid-cols-2 lg:grid-cols-3"
+            } gap-6`}
+          >
+            {commonIssues.map((issue) => (
+              <div class="bg-dark-card rounded-xl border border-dark overflow-hidden hover:border-accent-subtle transition-all duration-200 hover:shadow-lg group">
+                <div class="relative overflow-hidden">
+                  <img
+                    src={issue.imageWebp}
+                    alt={issue.alt}
+                    loading="lazy"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                {(issue.title || issue.description) && (
+                  <div class="p-6">
+                    {issue.title && (
+                      <h3 class="text-lg font-bold mb-2 text-dark-primary">{issue.title}</h3>
+                    )}
+                    {issue.description && (
+                      <p class="text-sm text-dark-secondary leading-relaxed">{issue.description}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-9 bg-dark-darker scroll-reveal">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-2xl font-bold mb-4 text-dark-primary">Why choose us for desktop & Mac repair?</h2>
@@ -96,7 +165,7 @@ const faqData = [
           We combine bench-based diagnostics with mobile service calls, so you get the right option for every fault. Our team regularly works on the latest Apple silicon devices as well as legacy Intel hardware, giving you continuity of care regardless of age.
         </p>
         <p class="text-dark-secondary">
-          Every repair includes clear communication, photo/video updates when helpful, and optional preventative maintenance to stop issues recurring. Need the machine collected? We can arrange pickup from your home or office anywhere within our 40‑minute radius.
+          Every repair includes clear communication, photo/video updates when helpful, and optional preventative maintenance to stop issues recurring. Need the machine collected? We can arrange pickup from your home or office throughout South London and surrounding regions. Contact now to inquire if unsure.
         </p>
       </div>
     </div>
@@ -120,10 +189,10 @@ const faqData = [
       <div class="max-w-4xl mx-auto">
         <FAQ questions={faqData} variant="dark" />
         <div class="mt-12 text-center">
-          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+          <a href={withBase('/contact')} class="btn-primary glow-effect inline-block mr-4">
             Book a Repair
           </a>
-          <a href="/services" class="btn-secondary inline-block">
+          <a href={withBase('/services')} class="btn-secondary inline-block">
             View All Services
           </a>
         </div>

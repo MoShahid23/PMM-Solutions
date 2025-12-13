@@ -5,8 +5,8 @@ export const siteConfig = {
   name: "PMMSolutions",
   tagline: "Fast, Affordable Tech Repair Near You",
   description:
-    "Professional Apple authorized tech repair services for laptops, phones, and data recovery. Serving Morden, Wimbledon, Kingston, Sutton, Croydon, Epsom and surrounding areas within a 40-minute radius.",
-  url: "https://www.example.com", // Update with actual domain
+    "Professional Apple authorized tech repair services for laptops, phones, and data recovery. Serving South London and surrounding regions. Contact now to inquire if unsure.",
+  url: "https://moshahid23.github.io/PMM-Solutions",
   author: "PMMSolutions",
   locale: "en-GB",
 };
@@ -27,17 +27,17 @@ export const businessInfo = {
   email: "info@pmmsolutions.co.uk",
   companyRegistration: "Company Registered in England and Wales No. 11832760",
   openingHours: {
-    monday: "09:00-18:00",
-    tuesday: "09:00-18:00",
-    wednesday: "09:00-18:00",
-    thursday: "09:00-18:00",
-    friday: "09:00-18:00",
-    saturday: "10:00-16:00",
-    sunday: "Closed",
+    monday: "09:00-19:00",
+    tuesday: "09:00-19:00",
+    wednesday: "09:00-19:00",
+    thursday: "09:00-19:00",
+    friday: "09:00-19:00",
+    saturday: "09:00-19:00",
+    sunday: "12:00-17:00",
   },
 };
 
-// Service areas - Towns within 40 minutes of Morden
+// Service areas - Towns in South London and surrounding regions
 // You can optionally add latitude/longitude for each location for more precise geo-targeting
 export const serviceAreas = [
   {

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StructuredData from '../../components/StructuredData.astro';
 import FAQ from '../../components/FAQ.astro';
 import { siteConfig, businessInfo } from '../../config';
+import { withBase } from '../../utils/url';
 
 const serviceName = 'Data Recovery';
 const serviceDescription = 'Professional data recovery services from damaged, corrupted, or inaccessible hard drives, SSDs, and storage devices. High success rate and secure handling.';
@@ -58,6 +59,28 @@ const faqData = [
     answer: 'Yes, we offer emergency data recovery services for urgent cases. Contact us immediately if you need urgent data recovery, and we\'ll prioritize your case.',
   },
 ];
+
+// Common issues images - flexible structure for 1 or multiple images
+const commonIssues = [
+  {
+    imageWebp: "/data-recovery/harddrives.webp",
+    alt: "Corrupted hard drive data recovery service - recover data from failed, crashed, or damaged storage devices",
+    title: "Corrupted Drives",
+    description: "Recover data from failed, crashed, or corrupted hard drives and SSDs",
+  },
+  {
+    imageWebp: "/data-recovery/iphone.webp",
+    alt: "Broken device data recovery service - extract data from damaged, water-damaged, or broken phones and devices",
+    title: "Broken Devices",
+    description: "Extract data from damaged, water-damaged, or broken devices",
+  },
+  {
+    imageWebp: "/data-recovery/recycle-bin.webp",
+    alt: "Deleted file recovery service - recover accidentally deleted files, folders, and formatted drives",
+    title: "Deleted Files",
+    description: "Recover accidentally deleted files, folders, and formatted drives",
+  },
+];
 ---
 
 <Layout 
@@ -100,6 +123,58 @@ const faqData = [
       </div>
     </div>
   </section>
+
+  <!-- Common Issues We Fix Section -->
+  {commonIssues.length > 0 && (
+    <section class="py-9 bg-dark-section scroll-reveal">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="prose max-w-none mb-12">
+            <h2
+              class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block"
+            >
+              Common Data Recovery Scenarios
+            </h2>
+            <p class="text-dark-secondary mt-4 max-w-3xl">
+              See examples of common situations where data recovery is needed. Our experienced technicians can recover your data from these scenarios and more.
+            </p>
+          </div>
+          <div
+            class={`grid grid-cols-1 ${
+              commonIssues.length === 1
+                ? "md:grid-cols-1 max-w-2xl mx-auto"
+                : commonIssues.length === 2
+                ? "md:grid-cols-2"
+                : "md:grid-cols-2 lg:grid-cols-3"
+            } gap-6`}
+          >
+            {commonIssues.map((issue) => (
+              <div class="bg-dark-card rounded-xl border border-dark overflow-hidden hover:border-accent-subtle transition-all duration-200 hover:shadow-lg group">
+                <div class="relative overflow-hidden">
+                  <img
+                    src={issue.imageWebp}
+                    alt={issue.alt}
+                    loading="lazy"
+                    class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                {(issue.title || issue.description) && (
+                  <div class="p-6">
+                    {issue.title && (
+                      <h3 class="text-lg font-bold mb-2 text-dark-primary">{issue.title}</h3>
+                    )}
+                    {issue.description && (
+                      <p class="text-sm text-dark-secondary leading-relaxed">{issue.description}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Recovery Process Section -->
   <section class="py-9 bg-dark-section scroll-reveal">
@@ -157,13 +232,13 @@ const faqData = [
 
         <div class="mt-12 text-center">
           <a 
-            href="/contact" 
+            href={withBase('/contact')} 
             class="btn-primary glow-effect inline-block mr-4"
           >
             Start Data Recovery
           </a>
           <a 
-            href="/services" 
+            href={withBase('/services')} 
             class="btn-secondary inline-block"
           >
             View All Services

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StructuredData from '../../components/StructuredData.astro';
 import FAQ from '../../components/FAQ.astro';
 import { siteConfig, businessInfo } from '../../config';
+import { withBase } from '../../utils/url';
 
 const serviceName = 'Virus & Malware Removal';
 const serviceDescription = 'Complete malware removal, ransomware cleanup, and security hardening for Windows and macOS devices. Fast response on-site or remotely.';
@@ -118,10 +119,10 @@ const faqData = [
       <div class="max-w-4xl mx-auto">
         <FAQ questions={faqData} variant="dark" />
         <div class="mt-12 text-center">
-          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+          <a href={withBase('/contact')} class="btn-primary glow-effect inline-block mr-4">
             Book Malware Removal
           </a>
-          <a href="/services" class="btn-secondary inline-block">
+          <a href={withBase('/services')} class="btn-secondary inline-block">
             View All Services
           </a>
         </div>

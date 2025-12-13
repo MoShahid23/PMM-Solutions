@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StructuredData from '../../components/StructuredData.astro';
 import FAQ from '../../components/FAQ.astro';
 import { siteConfig, businessInfo } from '../../config';
+import { withBase } from '../../utils/url';
 
 const serviceName = 'System Tune-Up';
 const serviceDescription = 'Deep performance optimisation for slow Windows PCs and Macs. Cleanup, updates, health checks, and preventative maintenance.';
@@ -74,7 +75,7 @@ const faqData = [
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-2xl font-bold mb-4 text-dark-primary border-b-2 border-accent-primary/30 pb-2 inline-block">
-          What’s included
+          What's included
         </h2>
         <ul class="space-y-3 text-dark-secondary mt-4">
           <li class="flex items-start"><span class="text-accent-primary mr-2 mt-1 text-xl font-bold">•</span><span>Disk cleanup, storage audit, and removal of temporary files</span></li>
@@ -105,10 +106,10 @@ const faqData = [
       <div class="max-w-4xl mx-auto">
         <FAQ questions={faqData} variant="dark" />
         <div class="mt-12 text-center">
-          <a href="/contact" class="btn-primary glow-effect inline-block mr-4">
+          <a href={withBase('/contact')} class="btn-primary glow-effect inline-block mr-4">
             Book a Tune-Up
           </a>
-          <a href="/services" class="btn-secondary inline-block">
+          <a href={withBase('/services')} class="btn-secondary inline-block">
             View All Services
           </a>
         </div>
